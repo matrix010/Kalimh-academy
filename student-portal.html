@@ -786,15 +786,15 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
     import {
-      getAuth,
-      createUserWithEmailAndPassword,
-      signInWithEmailAndPassword,
-      onAuthStateChanged,
-      signOut,
-      updateProfile,
-      sendEmailVerification,
-      reload
-    } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  updateProfile,
+  sendEmailVerification,
+  reload
+} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
     import {
       getFirestore,
       doc,
@@ -910,31 +910,27 @@
         if (authMode === "signup") {
           const credential = await createUserWithEmailAndPassword(auth, email, password);
           await updateProfile(credential.user, { displayName: name });
-          await sendEmailVerification(credential.user);
-          await signOut(auth);
 
-          setAuthMode("signin");
-          showMessage(
-            authMessage,
-            "Account created. Check your email and click the verification link before signing in.",
-            "success"
-          );
-          return;
+          await setDoc(doc(db, "students", credential.user.uid), {
+            fullName: name,
+            email,
+            phone: "",
+            dob: "",
+            courseDuration: "3 months",
+            englishLevel: "Intermediate",
+            accommodationType: "Private room",
+            area: "Kuala Lumpur city centre",
+            requests: "",
+            applicationStatus: "Application reviewing",
+            progress: 45,
+            enrollmentStatus: "Under review",
+            accommodationStatus: "Matching",
+            documentsStatus: "Pending",
+            createdAt: serverTimestamp(),
+            updatedAt: serverTimestamp()
+          }, { merge: true });
         } else {
-          const credential = await signInWithEmailAndPassword(auth, email, password);
-          await reload(credential.user);
-
-          if (!credential.user.emailVerified) {
-            await sendEmailVerification(credential.user);
-            await signOut(auth);
-
-            showMessage(
-              authMessage,
-              "Your email is not verified yet. A new verification email was sent. Verify it, then sign in again.",
-              "error"
-            );
-            return;
-          }
+          await signInWithEmailAndPassword(auth, email, password);
         }
       } catch (error) {
         showMessage(authMessage, cleanFirebaseError(error.message), "error");
@@ -947,40 +943,59 @@
       await signOut(auth);
     });
 
-    onAuthStateChanged(auth, async (user) => {
-      currentUser = null;
 
-      if (unsubscribeFiles) {
-        unsubscribeFiles();
-        unsubscribeFiles = null;
-      }
+	onAuthStateChanged(auth, async (user) => {
+  // Always hide the portal until verification is confirmed
+  portalApp.classList.add("hidden");
+  authScreen.classList.remove("hidden");
+  currentUser = null;
 
-      if (user) {
-        await reload(user);
+  if (unsubscribeFiles) {
+    unsubscribeFiles();
+    unsubscribeFiles = null;
+  }
 
-        if (!user.emailVerified) {
-          portalApp.classList.add("hidden");
-          authScreen.classList.remove("hidden");
-          showMessage(
-            authMessage,
-            "Verify your email before entering the portal. Check your inbox and spam folder.",
-            "error"
-          );
-          return;
-        }
+  if (!user) {
+    return;
+  }
 
-        currentUser = user;
-        authScreen.classList.add("hidden");
-        portalApp.classList.remove("hidden");
+  try {
+    await reload(user);
 
-        await loadProfile(user);
-        watchFiles(user.uid);
-      } else {
-        portalApp.classList.add("hidden");
-        authScreen.classList.remove("hidden");
-      }
-    });
+    console.log("Signed-in email:", user.email);
+    console.log("Email verified:", user.emailVerified);
 
+    if (!user.emailVerified) {
+      await signOut(auth);
+
+      showMessage(
+        authMessage,
+        "You must verify your email before entering the portal. Check your inbox and spam folder.",
+        "error"
+      );
+
+      return;
+    }
+
+    currentUser = user;
+
+    authScreen.classList.add("hidden");
+    portalApp.classList.remove("hidden");
+
+    await loadProfile(user);
+    watchFiles(user.uid);
+
+  } catch (error) {
+    console.error(error);
+    await signOut(auth);
+
+    showMessage(
+      authMessage,
+      "Unable to confirm email verification. Please sign in again.",
+      "error"
+    );
+  }
+});
     async function loadProfile(user) {
       const profileRef = doc(db, "students", user.uid);
       const profileSnap = await getDoc(profileRef);
