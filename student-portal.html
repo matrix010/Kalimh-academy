@@ -1,12 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Google / Firebase Analytics is initialized in the module script below -->
   <title>VOXA Academy — Secure Student Portal</title>
+
+  <!-- EmailJS Library Integration for Secure Code Delivery -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <style>
     :root {
@@ -47,10 +47,7 @@
       text-decoration: none;
     }
 
-    button,
-    input,
-    select,
-    textarea {
+    button, input, select, textarea {
       font: inherit;
     }
 
@@ -96,12 +93,9 @@
       color: #fff;
       font-family: Georgia, 'Times New Roman', serif;
       font-size: 1.4rem;
-      box-shadow: 0 14px 32px rgba(16, 32, 51, 0.2);
     }
 
-    h1,
-    h2,
-    h3 {
+    h1, h2, h3 {
       font-family: Georgia, 'Times New Roman', serif;
       font-weight: 500;
       letter-spacing: -0.04em;
@@ -139,6 +133,47 @@
       background: var(--deep);
       color: #fff;
       border-color: var(--deep);
+    }
+
+    /* UI/UX IMPROVEMENT: Modern Code Verification Modal Overlay Box */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(11, 31, 58, 0.85);
+      backdrop-filter: blur(12px);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .modal-card {
+      width: min(400px, 100%);
+      background: var(--card);
+      border-radius: 28px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .modal-card h3 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .modal-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+
+    .code-input-field {
+      letter-spacing: 0.38em;
+      font-size: 1.6rem;
+      font-weight: 800;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 20px;
     }
 
     .portal {
@@ -198,26 +233,10 @@
       transform: translateY(-2px);
     }
 
-    .button.secondary {
-      background: var(--deep);
-    }
-
-    .button.mint {
-      background: var(--mint);
-      color: var(--ink);
-    }
-
-    .button.ghost {
-      background: transparent;
-      color: var(--blue);
-      border: 1px solid rgba(37, 99, 235, 0.3);
-    }
-
-    .button:disabled {
-      opacity: 0.65;
-      cursor: wait;
-      transform: none;
-    }
+    .button.secondary { background: var(--deep); }
+    .button.mint { background: var(--mint); color: var(--ink); }
+    .button.ghost { background: transparent; color: var(--blue); border: 1px solid rgba(37, 99, 235, 0.3); }
+    .button:disabled { opacity: 0.65; cursor: wait; transform: none; }
 
     .hero {
       display: grid;
@@ -234,7 +253,6 @@
         url('https://images.pexels.com/photos/5212337/pexels-photo-5212337.jpeg?auto=compress&cs=tinysrgb&w=1400') center/cover;
       color: #fff;
       box-shadow: var(--shadow);
-      overflow: hidden;
     }
 
     .kicker {
@@ -280,10 +298,7 @@
       text-transform: uppercase;
     }
 
-    .status-card h2 {
-      margin-top: 18px;
-      font-size: 2.3rem;
-    }
+    .status-card h2 { margin-top: 18px; font-size: 2.3rem; }
 
     .progress {
       margin-top: 24px;
@@ -301,68 +316,18 @@
       border-radius: inherit;
     }
 
-    .status-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 24px;
-    }
+    .status-list { display: grid; gap: 12px; margin-top: 24px; }
+    .status-item { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 0.92rem; }
+    .status-item strong { color: var(--ink); }
 
-    .status-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
+    .grid { display: grid; grid-template-columns: 0.65fr 1fr; gap: 24px; margin-top: 24px; }
+    .panel { border: 1px solid var(--line); border-radius: 34px; background: rgba(255, 255, 255, 0.92); box-shadow: var(--shadow); overflow: hidden; }
+    .panel-header { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 22px 24px; border-bottom: 1px solid var(--line); }
+    .panel-header h2 { font-size: 1.8rem; }
+    .panel-body { padding: 24px; }
 
-    .status-item strong {
-      color: var(--ink);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 0.65fr 1fr;
-      gap: 24px;
-      margin-top: 24px;
-    }
-
-    .panel {
-      border: 1px solid var(--line);
-      border-radius: 34px;
-      background: rgba(255, 255, 255, 0.92);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .panel-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 22px 24px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .panel-header h2 {
-      font-size: 1.8rem;
-    }
-
-    .panel-body {
-      padding: 24px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-
-    .form-group.full {
-      grid-column: 1 / -1;
-    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .form-group.full { grid-column: 1 / -1; }
 
     label {
       display: block;
@@ -374,9 +339,7 @@
       text-transform: uppercase;
     }
 
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       width: 100%;
       border: 1px solid rgba(16, 32, 51, 0.16);
       border-radius: 18px;
@@ -387,192 +350,56 @@
       transition: border-color 180ms ease, box-shadow 180ms ease;
     }
 
-    textarea {
-      min-height: 92px;
-      resize: vertical;
-    }
+    textarea { min-height: 92px; resize: vertical; }
+    input:focus, select:focus, textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12); }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
-    }
+    .file-drop { padding: 22px; border: 1px dashed rgba(37, 99, 235, 0.45); border-radius: 26px; background: rgba(219, 234, 254, 0.52); }
+    .file-drop p { color: var(--muted); margin-top: 8px; font-size: 0.92rem; }
+    .upload-progress { display: none; margin-top: 14px; height: 12px; border-radius: 999px; overflow: hidden; background: #dbeafe; }
+    .upload-progress span { display: block; width: 0%; height: 100%; background: linear-gradient(90deg, var(--blue), var(--mint)); transition: width 180ms ease; }
 
-    .file-drop {
-      padding: 22px;
-      border: 1px dashed rgba(37, 99, 235, 0.45);
-      border-radius: 26px;
-      background: rgba(219, 234, 254, 0.52);
-    }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 14px 10px; border-bottom: 1px solid var(--line); text-align: left; font-size: 0.9rem; vertical-align: middle; }
+    th { color: var(--muted); font-size: 0.72rem; font-weight: 900; letter-spacing: 0.09em; text-transform: uppercase; }
 
-    .file-drop p {
-      color: var(--muted);
-      margin-top: 8px;
-      font-size: 0.92rem;
-    }
+    .tag { display: inline-flex; align-items: center; border-radius: 999px; padding: 6px 10px; font-size: 0.72rem; font-weight: 900; text-transform: uppercase; white-space: nowrap; }
+    .tag.review { background: rgba(245, 158, 11, 0.15); color: #92400e; }
+    .tag.approved { background: rgba(22, 163, 74, 0.14); color: #166534; }
+    .tag.update { background: rgba(220, 38, 38, 0.12); color: #991b1b; }
 
-    .upload-progress {
-      display: none;
-      margin-top: 14px;
-      height: 12px;
-      border-radius: 999px;
-      overflow: hidden;
-      background: #dbeafe;
-    }
+    .notes { display: grid; gap: 14px; }
+    .note { padding: 16px; border-radius: 22px; background: #f8fbff; border: 1px solid var(--line); }
+    .note strong { display: block; margin-bottom: 4px; }
+    .note p { color: var(--muted); font-size: 0.92rem; }
 
-    .upload-progress span {
-      display: block;
-      width: 0%;
-      height: 100%;
-      background: linear-gradient(90deg, var(--blue), var(--mint));
-      transition: width 180ms ease;
-    }
+    .message { display: none; margin-top: 16px; padding: 13px 15px; border-radius: 18px; font-size: 0.92rem; font-weight: 700; }
+    .message.success { display: block; background: rgba(22, 163, 74, 0.12); color: #166534; }
+    .message.error { display: block; background: rgba(220, 38, 38, 0.1); color: #991b1b; }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
+    .whatsapp-float { position: fixed; right: 24px; bottom: 24px; z-index: 100; width: 58px; height: 58px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; background: #25d366; color: #ffffff; box-shadow: 0 18px 40px rgba(16, 32, 51, 0.24); font-size: 1.45rem; font-weight: 900; }
 
-    th,
-    td {
-      padding: 14px 10px;
-      border-bottom: 1px solid var(--line);
-      text-align: left;
-      font-size: 0.9rem;
-      vertical-align: middle;
-    }
-
-    th {
-      color: var(--muted);
-      font-size: 0.72rem;
-      font-weight: 900;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 0.72rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .tag.review {
-      background: rgba(245, 158, 11, 0.15);
-      color: #92400e;
-    }
-
-    .tag.approved {
-      background: rgba(22, 163, 74, 0.14);
-      color: #166534;
-    }
-
-    .tag.update {
-      background: rgba(220, 38, 38, 0.12);
-      color: #991b1b;
-    }
-
-    .notes {
-      display: grid;
-      gap: 14px;
-    }
-
-    .note {
-      padding: 16px;
-      border-radius: 22px;
-      background: #f8fbff;
-      border: 1px solid var(--line);
-    }
-
-    .note strong {
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .note p {
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .message {
-      display: none;
-      margin-top: 16px;
-      padding: 13px 15px;
-      border-radius: 18px;
-      font-size: 0.92rem;
-      font-weight: 700;
-    }
-
-    .message.success {
-      display: block;
-      background: rgba(22, 163, 74, 0.12);
-      color: #166534;
-    }
-
-    .message.error {
-      display: block;
-      background: rgba(220, 38, 38, 0.1);
-      color: #991b1b;
-    }
-
-    .whatsapp-float {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      z-index: 100;
-      width: 58px;
-      height: 58px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      background: #25d366;
-      color: #ffffff;
-      box-shadow: 0 18px 40px rgba(16, 32, 51, 0.24);
-      font-size: 1.45rem;
-      font-weight: 900;
-    }
-
-    @media (max-width: 940px) {
-      .hero,
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-    }
-
+    @media (max-width: 940px) { .hero, .grid { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } }
     @media (max-width: 680px) {
-      .topbar {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .top-actions {
-        width: 100%;
-      }
-
-      .button,
-      .pill {
-        width: 100%;
-        justify-content: center;
-      }
-
-      th:nth-child(3),
-      td:nth-child(3) {
-        display: none;
-      }
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .top-actions { width: 100%; }
+      .button, .pill { width: 100%; justify-content: center; }
+      th:nth-child(3), td:nth-child(3) { display: none; }
     }
   </style>
 </head>
 <body>
+
+  <!-- DYNAMIC OTP VERIFICATION VIEW WINDOW CONTAINER -->
+  <section class="modal-overlay hidden" id="otpModal">
+    <div class="modal-card">
+      <h3>Enter Code</h3>
+      <p>We sent a 6-digit verification security code to your email address. Enter it below to unlock access.</p>
+      <input type="text" id="otpInput" class="code-input-field" maxlength="6" placeholder="000000" />
+      <button type="button" class="button mint" id="verifyOtpBtn" style="width: 100%;">Verify Account</button>
+      <div class="message" id="otpMessage"></div>
+    </div>
+  </section>
+
   <section class="auth-screen" id="authScreen">
     <div class="auth-card">
       <div class="brand">
@@ -587,7 +414,7 @@
         <button class="tab" id="signUpTab" type="button">Create account</button>
       </div>
 
-      <form id="authForm">
+      <form id="authForm" novalidate>
         <div class="form-row">
           <div class="form-group full" id="nameField">
             <label for="authName">Full name</label>
@@ -618,7 +445,7 @@
 
       <div class="top-actions">
         <span class="pill" id="studentEmailPill">student@example.com</span>
-        <a class="button ghost" href="index.html">Main website</a>
+        <a class="button ghost" href="./">Main website</a>
         <button class="button secondary" id="logoutBtn">Sign out</button>
       </div>
     </header>
@@ -787,15 +614,13 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
     import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-  updateProfile,
-  sendEmailVerification,
-  reload
-} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+      getAuth,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+      onAuthStateChanged,
+      signOut,
+      updateProfile
+    } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
     import {
       getFirestore,
       doc,
@@ -832,8 +657,13 @@
     const db = getFirestore(app);
     const storage = getStorage(app);
 
+    // Initialize EmailJS with your Public Key
+    emailjs.init({ publicKey: "YOUR_EMAILJS_PUBLIC_KEY" });
+
     let currentUser = null;
     let unsubscribeFiles = null;
+    let generatedVerificationCode = null;
+    let cachedSignupData = null;
 
     const authScreen = document.getElementById("authScreen");
     const portalApp = document.getElementById("portalApp");
@@ -853,22 +683,28 @@
     const uploadProgress = document.getElementById("uploadProgress");
     const uploadProgressBar = document.getElementById("uploadProgressBar");
 
+    // Modal UI Hooks
+    const otpModal = document.getElementById("otpModal");
+    const otpInput = document.getElementById("otpInput");
+    const verifyOtpBtn = document.getElementById("verifyOtpBtn");
+    const otpMessage = document.getElementById("otpMessage");
+
     let authMode = "signin";
-    let isCreatingAccount = false;
 
     function showMessage(element, text, type = "success") {
       element.textContent = text;
       element.className = `message ${type}`;
+      element.style.display = "block";
     }
 
     function clearMessage(element) {
       element.textContent = "";
       element.className = "message";
+      element.style.display = "none";
     }
 
     function setAuthMode(mode) {
       authMode = mode;
-
       if (mode === "signup") {
         signUpTab.classList.add("active");
         signInTab.classList.remove("active");
@@ -880,7 +716,6 @@
         nameField.classList.add("hidden");
         authBtn.textContent = "Sign in";
       }
-
       clearMessage(authMessage);
     }
 
@@ -888,6 +723,11 @@
     signUpTab.addEventListener("click", () => setAuthMode("signup"));
     setAuthMode("signin");
 
+    function isValidEmail(emailStr) {
+      return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(emailStr);
+    }
+
+	// AUTH ACTION SUBMISSION
     authForm.addEventListener("submit", async (event) => {
       event.preventDefault();
       clearMessage(authMessage);
@@ -896,133 +736,99 @@
       const email = document.getElementById("authEmail").value.trim();
       const password = document.getElementById("authPassword").value;
 
+      // UI/UX FIX: Structural Validation Checks before hitting external APIs
       if (!email || !password) {
         showMessage(authMessage, "Email and password are required.", "error");
         return;
       }
 
-      if (authMode === "signup" && !name) {
-        showMessage(authMessage, "Full name is required to create an account.", "error");
+      if (!isValidEmail(email)) {
+        showMessage(authMessage, "Please enter a valid email format (e.g., name@example.com).", "error");
+        document.getElementById("authEmail").focus();
         return;
       }
 
+      if (authMode === "signup") {
+        if (!name) {
+          showMessage(authMessage, "Full name is required to create an account.", "error");
+          document.getElementById("authName").focus();
+          return;
+        }
+
+        if (password.length < 6) {
+          showMessage(authMessage, "Password must be at least 6 characters.", "error");
+          document.getElementById("authPassword").focus();
+          return;
+        }
+
+        authBtn.disabled = true;
+        authBtn.textContent = "Sending Code...";
+
+        try {
+          // Generate an encrypted-style, clean numeric 6-digit verification code string
+          generatedVerificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+          
+          // Cache the parameters globally so we don't construct the user entity until verification clears
+          cachedSignupData = { name, email, password };
+
+          // UI/UX FIX: Integrated your live Template ID seamlessly
+          await emailjs.send("ksuXoq32571VfGNbC", "template_em7hi3n", {
+            student_name: name,
+            recipient_email: email,
+            verification_code: generatedVerificationCode
+          });
+
+          // Present the OTP validation dialog drawer view
+          clearMessage(otpMessage);
+          otpInput.value = "";
+          otpModal.classList.remove("hidden");
+          otpInput.focus(); // Good UX: instantly focus the code box for the user
+
+        } catch (mailErr) {
+          console.error(mailErr);
+          showMessage(authMessage, "Failed to send verification code. Check your EmailJS Service ID configuration.", "error");
+        } finally {
+          authBtn.disabled = false;
+          authBtn.textContent = "Create account";
+        }
+        return;
+      }
+
+      // HANDLE STANDARD LOGIN
       authBtn.disabled = true;
-
+      authBtn.textContent = "Signing in...";
       try {
-        if (authMode === "signup") {
-          isCreatingAccount = true;
-
-          const credential = await createUserWithEmailAndPassword(auth, email, password);
-          await updateProfile(credential.user, { displayName: name });
-          await sendEmailVerification(credential.user);
-          await signOut(auth);
-
-          setAuthMode("signin");
-          document.getElementById("authPassword").value = "";
-
-          showMessage(
-            authMessage,
-            "Account created. Check your email and click the verification link before signing in.",
-            "success"
-          );
-
-          return;
-        }
-
-        const credential = await signInWithEmailAndPassword(auth, email, password);
-        await reload(credential.user);
-
-        if (!credential.user.emailVerified) {
-          try {
-            await sendEmailVerification(credential.user);
-          } catch (verificationError) {
-            console.warn("Verification email could not be resent:", verificationError);
-          }
-
-          await signOut(auth);
-
-          showMessage(
-            authMessage,
-            "Your email is not verified. Check your inbox and spam folder. A verification email was sent.",
-            "error"
-          );
-
-          return;
-        }
+        await signInWithEmailAndPassword(auth, email, password);
       } catch (error) {
         showMessage(authMessage, cleanFirebaseError(error.message), "error");
       } finally {
-        isCreatingAccount = false;
         authBtn.disabled = false;
+        authBtn.textContent = "Sign in";
       }
     });
 
-    logoutBtn.addEventListener("click", async () => {
-      await signOut(auth);
-    });
+    // VALIDATE THE CODE MANUAL INTERACTOR BUTTON
+    verifyOtpBtn.addEventListener("click", async () => {
+      clearMessage(otpMessage);
+      const userEnteredCode = otpInput.value.trim();
 
-    onAuthStateChanged(auth, async (user) => {
-      currentUser = null;
-
-      // Never show the portal until verification has been confirmed.
-      portalApp.classList.add("hidden");
-      authScreen.classList.remove("hidden");
-
-      if (unsubscribeFiles) {
-        unsubscribeFiles();
-        unsubscribeFiles = null;
-      }
-
-      if (!user) {
+      if (userEnteredCode !== generatedVerificationCode) {
+        showMessage(otpMessage, "Incorrect verification code. Please check your inbox and try again.", "error");
         return;
       }
 
-      // During account creation, the signup handler sends verification and signs out.
-      if (isCreatingAccount) {
-        return;
-      }
+      verifyOtpBtn.disabled = true;
+      verifyOtpBtn.textContent = "Verifying...";
 
       try {
-        await reload(user);
+        // Authenticated Code Approved -> Proceed to generate user profile container via Firebase
+        const credential = await createUserWithEmailAndPassword(auth, cachedSignupData.email, cachedSignupData.password);
+        await updateProfile(credential.user, { displayName: cachedSignupData.name });
 
-        if (!user.emailVerified) {
-          await signOut(auth);
-
-          showMessage(
-            authMessage,
-            "Verify your email before entering the portal. Check your inbox and spam folder.",
-            "error"
-          );
-
-          return;
-        }
-
-        currentUser = user;
-        authScreen.classList.add("hidden");
-        portalApp.classList.remove("hidden");
-
-        await loadProfile(user);
-        watchFiles(user.uid);
-      } catch (error) {
-        console.error(error);
-        await signOut(auth);
-
-        showMessage(
-          authMessage,
-          "Unable to confirm email verification. Please sign in again.",
-          "error"
-        );
-      }
-    });
-
-    async function loadProfile(user) {
-      const profileRef = doc(db, "students", user.uid);
-      const profileSnap = await getDoc(profileRef);
-
-      if (!profileSnap.exists()) {
-        await setDoc(profileRef, {
-          fullName: user.displayName || "",
-          email: user.email || "",
+        // Force initialize custom student model entry block inside Firestore DB
+        await setDoc(doc(db, "students", credential.user.uid), {
+          fullName: cachedSignupData.name,
+          email: cachedSignupData.email,
           phone: "",
           dob: "",
           courseDuration: "3 months",
@@ -1037,12 +843,52 @@
           documentsStatus: "Pending",
           createdAt: serverTimestamp(),
           updatedAt: serverTimestamp()
-        }, { merge: true });
+        });
+
+        // Close the dialog modal overlay context
+        otpModal.classList.add("hidden");
+        setAuthMode("signin");
+        document.getElementById("authPassword").value = "";
+        showMessage(authMessage, "Email verified successfully! You can now sign in to your dashboard.", "success");
+
+      } catch (authErr) {
+        showMessage(otpMessage, cleanFirebaseError(authErr.message), "error");
+      } finally {
+        verifyOtpBtn.disabled = false;
+        verifyOtpBtn.textContent = "Verify Account";
+      }
+    });
+
+    logoutBtn.addEventListener("click", async () => {
+      await signOut(auth);
+    });
+
+    onAuthStateChanged(auth, async (user) => {
+      currentUser = null;
+      portalApp.classList.add("hidden");
+      authScreen.classList.remove("hidden");
+
+      if (unsubscribeFiles) {
+        unsubscribeFiles();
+        unsubscribeFiles = null;
       }
 
-      const updatedSnap = await getDoc(profileRef);
-      const profile = updatedSnap.data();
+      if (!user) return;
 
+      currentUser = user;
+      authScreen.classList.add("hidden");
+      portalApp.classList.remove("hidden");
+
+      await loadProfile(user);
+      watchFiles(user.uid);
+    });
+
+    async function loadProfile(user) {
+      const profileRef = doc(db, "students", user.uid);
+      const profileSnap = await getDoc(profileRef);
+      if (!profileSnap.exists()) return;
+
+      const profile = profileSnap.data();
       document.getElementById("studentEmailPill").textContent = user.email || profile.email || "";
       document.getElementById("welcomeTitle").textContent = `Welcome, ${profile.fullName || user.displayName || "Student"}.`;
 
@@ -1066,29 +912,21 @@
 
     profileForm.addEventListener("submit", async (event) => {
       event.preventDefault();
-
-      if (!currentUser || !currentUser.emailVerified) {
-        showMessage(profileMessage, "Verify your email before saving profile information.", "error");
-        return;
-      }
+      if (!currentUser) return;
 
       clearMessage(profileMessage);
       saveProfileBtn.disabled = true;
-
       const fullName = document.getElementById("fullName").value.trim();
 
       try {
         await updateProfile(currentUser, { displayName: fullName });
-
         await setDoc(doc(db, "students", currentUser.uid), {
           fullName,
-          email: currentUser.email,
           phone: document.getElementById("phone").value.trim(),
           dob: document.getElementById("dob").value,
           courseDuration: document.getElementById("courseDuration").value,
           englishLevel: document.getElementById("englishLevel").value,
           accommodationType: document.getElementById("accommodationType").value,
-          area: document.getElementById("area").value,
           requests: document.getElementById("requests").value.trim(),
           updatedAt: serverTimestamp()
         }, { merge: true });
@@ -1106,14 +944,7 @@
       const file = event.target.files[0];
       if (!file || !currentUser) return;
 
-      if (!currentUser.emailVerified) {
-        showMessage(fileMessage, "Verify your email before uploading documents.", "error");
-        event.target.value = "";
-        return;
-      }
-
       clearMessage(fileMessage);
-
       const allowedTypes = ["application/pdf", "image/png", "image/jpeg", "image/webp"];
       const maxSize = 10 * 1024 * 1024;
 
@@ -1149,7 +980,6 @@
         },
         async () => {
           const downloadUrl = await getDownloadURL(uploadTask.snapshot.ref);
-
           await addDoc(collection(db, "students", currentUser.uid, "files"), {
             fileName: file.name,
             storagePath,
@@ -1160,7 +990,6 @@
             size: file.size,
             uploadedAt: serverTimestamp()
           });
-
           showMessage(fileMessage, "File uploaded successfully.", "success");
           uploadProgress.style.display = "none";
           event.target.value = "";
@@ -1170,22 +999,15 @@
 
     function watchFiles(uid) {
       const filesQuery = query(collection(db, "students", uid, "files"), orderBy("uploadedAt", "desc"));
-
       unsubscribeFiles = onSnapshot(filesQuery, (snapshot) => {
         filesTable.innerHTML = "";
-
         if (snapshot.empty) {
           filesTable.innerHTML = `<tr><td colspan="4">No files uploaded yet.</td></tr>`;
           return;
         }
-
         snapshot.forEach((docSnap) => {
           const file = docSnap.data();
-          const statusClass =
-            file.status === "Approved" ? "approved" :
-            file.status === "Needs update" || file.status === "Rejected" ? "update" :
-            "review";
-
+          const statusClass = file.status === "Approved" ? "approved" : (file.status === "Needs update" || file.status === "Rejected" ? "update" : "review");
           const row = document.createElement("tr");
           row.innerHTML = `
             <td><strong>${escapeHtml(file.fileName || "Document")}</strong></td>
@@ -1201,26 +1023,11 @@
     }
 
     function cleanFirebaseError(message) {
-      const cleaned = message
-        .replace("Firebase: ", "")
-        .replace(/\(auth\/.*?\)\.?/g, "")
-        .replace(/\(storage\/.*?\)\.?/g, "")
-        .trim();
-
-      if (cleaned.includes("Missing or insufficient permissions")) {
-        return "Access blocked. Verify your email, then sign in again.";
-      }
-
-      return cleaned;
+      return message.replace("Firebase: ", "").replace(/\(auth\/.*?\)\.?/g, "").replace(/\(storage\/.*?\)\.?/g, "").trim();
     }
 
     function escapeHtml(value) {
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+      return String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
     }
   </script>
 </body>
