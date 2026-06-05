@@ -610,7 +610,7 @@
     <a class="whatsapp-float" href="https://wa.me/60123456789" target="_blank" rel="noopener noreferrer" aria-label="Contact VOXA Academy on WhatsApp">↗</a>
   </main>
 
-  <script type="module">
+<script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
     import {
@@ -657,7 +657,7 @@
     const db = getFirestore(app);
     const storage = getStorage(app);
 
-    // Initialize EmailJS with your Public Key
+    // Initialize EmailJS with your verified Public Key
     emailjs.init({ publicKey: "ksuXoq32571VfGNbC" });
 
     let currentUser = null;
@@ -727,7 +727,7 @@
       return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(emailStr);
     }
 
-	// AUTH ACTION SUBMISSION
+    // AUTH ACTION SUBMISSION
     authForm.addEventListener("submit", async (event) => {
       event.preventDefault();
       clearMessage(authMessage);
@@ -736,7 +736,6 @@
       const email = document.getElementById("authEmail").value.trim();
       const password = document.getElementById("authPassword").value;
 
-      // UI/UX FIX: Structural Validation Checks before hitting external APIs
       if (!email || !password) {
         showMessage(authMessage, "Email and password are required.", "error");
         return;
@@ -765,28 +764,28 @@
         authBtn.textContent = "Sending Code...";
 
         try {
-          // Generate an encrypted-style, clean numeric 6-digit verification code string
+          // Generate a numeric 6-digit verification code string
           generatedVerificationCode = Math.floor(100000 + Math.random() * 900000).toString();
           
-          // Cache the parameters globally so we don't construct the user entity until verification clears
-          cachedSignupData = { name, email, password };
+          // Cache inputs globally
+          cachedSignupData = { name, email, password, isProcessingRegistration: false };
 
-          // UI/UX FIX: Integrated your live Template ID seamlessly
-          await emailjs.send("ksuXoq32571VfGNbC", "template_em7hi3n", {
+          // UI/UX FIX: Configured with your live active Service ID and Template ID
+          await emailjs.send("service_l84wqvs", "template_em7hi3n", {
             student_name: name,
             recipient_email: email,
             verification_code: generatedVerificationCode
           });
 
-          // Present the OTP validation dialog drawer view
+          // Open OTP blur modal view window smoothly
           clearMessage(otpMessage);
           otpInput.value = "";
           otpModal.classList.remove("hidden");
-          otpInput.focus(); // Good UX: instantly focus the code box for the user
+          otpInput.focus(); 
 
         } catch (mailErr) {
           console.error(mailErr);
-          showMessage(authMessage, "Failed to send verification code. Check your EmailJS Service ID configuration.", "error");
+          showMessage(authMessage, "Failed to send verification code. Check your connection or template variables.", "error");
         } finally {
           authBtn.disabled = false;
           authBtn.textContent = "Create account";
@@ -821,11 +820,15 @@
       verifyOtpBtn.textContent = "Verifying...";
 
       try {
-        // Authenticated Code Approved -> Proceed to generate user profile container via Firebase
+        // UI/UX STATE TRACKING FIX: Tell the auth observer we are actively saving profiles
+        // so it doesn't hijack the viewport screens premature of database insertion
+        cachedSignupData.isProcessingRegistration = true;
+
+        // Create the official auth profile container via Firebase
         const credential = await createUserWithEmailAndPassword(auth, cachedSignupData.email, cachedSignupData.password);
         await updateProfile(credential.user, { displayName: cachedSignupData.name });
 
-        // Force initialize custom student model entry block inside Firestore DB
+        // Initialize custom student model entity inside Firestore DB
         await setDoc(doc(db, "students", credential.user.uid), {
           fullName: cachedSignupData.name,
           email: cachedSignupData.email,
@@ -845,8 +848,12 @@
           updatedAt: serverTimestamp()
         });
 
-        // Close the dialog modal overlay context
+        // Close dialog modal container context safely
         otpModal.classList.add("hidden");
+        
+        // Clean cache allocation variables
+        cachedSignupData = null;
+        
         setAuthMode("signin");
         document.getElementById("authPassword").value = "";
         showMessage(authMessage, "Email verified successfully! You can now sign in to your dashboard.", "success");
@@ -865,6 +872,12 @@
 
     onAuthStateChanged(auth, async (user) => {
       currentUser = null;
+      
+      // UI/UX ENVIRONMENT CHECK: Avoid view resetting if we are processing registration databases manually
+      if (cachedSignupData && cachedSignupData.isProcessingRegistration) {
+        return;
+      }
+
       portalApp.classList.add("hidden");
       authScreen.classList.remove("hidden");
 
