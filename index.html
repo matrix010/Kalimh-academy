@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HSSBHJYQX3"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-HSSBHJYQX3');
   </script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VOXA Academy — Malaysia ESL + Accommodation Concierge</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Kalimh Academy — Malaysia ESL + Accommodation Concierge</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     :root {
       --ink: #102033;
       --paper: #eef7ff;
@@ -26,16 +31,6 @@
       --coral: #ff7a59;
       --sky: #dbeafe;
       --shadow: 0 28px 80px rgba(16, 32, 51, 0.14);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     body {
@@ -51,23 +46,16 @@
       text-decoration: none;
     }
 
-    input,
-    select,
-    textarea,
-    button {
-      font: inherit;
-    }
-
     .page {
       width: min(1440px, 100%);
       margin: 0 auto;
-      background:
-        radial-gradient(circle at 10% 4%, rgba(56, 217, 169, 0.34), transparent 32%),
-        radial-gradient(circle at 92% 20%, rgba(37, 99, 235, 0.18), transparent 30%),
-        radial-gradient(circle at 70% 90%, rgba(255, 122, 89, 0.12), transparent 28%),
-        var(--paper);
+      background: radial-gradient(circle at 10% 4%, rgba(56, 217, 169, 0.34), transparent 32%),
+                  radial-gradient(circle at 92% 20%, rgba(37, 99, 235, 0.18), transparent 30%),
+                  radial-gradient(circle at 70% 90%, rgba(255, 122, 89, 0.12), transparent 28%),
+                  var(--paper);
     }
 
+    /* navigation */
     .nav {
       position: sticky;
       top: 0;
@@ -100,14 +88,9 @@
       color: var(--muted);
     }
 
-    .nav-links a {
-      transition: color 180ms ease;
-    }
+    .nav-links a:hover { color: var(--blue); }
 
-    .nav-links a:hover {
-      color: var(--blue);
-    }
-
+    /* hero */
     .hero {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -161,7 +144,6 @@
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
       gap: 18px;
       margin-top: 40px;
     }
@@ -180,7 +162,7 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
+      transition: transform 180ms ease, background 180ms ease;
     }
 
     .button.primary {
@@ -194,14 +176,7 @@
       color: var(--ink);
     }
 
-    .button:hover {
-      transform: translateY(-3px);
-    }
-
-    .button.secondary:hover {
-      background: var(--ink);
-      color: var(--paper);
-    }
+    .button:hover { transform: translateY(-3px); }
 
     .hero-note {
       display: grid;
@@ -226,7 +201,6 @@
       border-left: 1px solid var(--line);
       overflow: hidden;
       background: var(--deep);
-      color: var(--cream);
     }
 
     .cover-card {
@@ -236,9 +210,8 @@
       flex-direction: column;
       justify-content: space-between;
       padding: clamp(24px, 4vw, 52px);
-      background:
-        linear-gradient(to top, rgba(11, 31, 58, 0.84), rgba(11, 31, 58, 0.2)),
-        url('https://images.pexels.com/photos/5212337/pexels-photo-5212337.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover;
+      background: linear-gradient(to top, rgba(11, 31, 58, 0.84), rgba(11, 31, 58, 0.2)),
+                  url('https://images.pexels.com/photos/5212337/pexels-photo-5212337.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover;
       box-shadow: var(--shadow);
       isolation: isolate;
     }
@@ -249,7 +222,6 @@
       inset: 18px;
       border: 1px solid rgba(255, 255, 255, 0.38);
       pointer-events: none;
-      z-index: -1;
     }
 
     .cover-card::after {
@@ -265,26 +237,24 @@
       z-index: -1;
     }
 
-    .cover-kicker,
-    .cover-footer {
-      position: relative;
-      z-index: 1;
+    .cover-title {
+      font-size: clamp(3.2rem, 7vw, 6.8rem);
+      line-height: 0.85;
+      letter-spacing: -0.07em;
+      max-width: 520px;
+      color: white;
+    }
+
+    .cover-kicker, .cover-footer {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 0.74rem;
       font-weight: 900;
       letter-spacing: 0.2em;
       text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
     }
 
-    .cover-title {
-      position: relative;
-      z-index: 1;
-      font-size: clamp(3.2rem, 7vw, 6.8rem);
-      line-height: 0.85;
-      letter-spacing: -0.07em;
-      max-width: 520px;
-    }
-
+    /* sections */
     .section {
       padding: clamp(64px, 9vw, 126px) clamp(24px, 5vw, 72px);
       border-bottom: 1px solid var(--line);
@@ -294,7 +264,6 @@
       display: grid;
       grid-template-columns: 0.42fr 1fr;
       gap: clamp(28px, 5vw, 86px);
-      align-items: start;
       margin-bottom: clamp(46px, 7vw, 86px);
     }
 
@@ -337,7 +306,7 @@
     .pullquote span {
       display: block;
       margin-top: 26px;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Arial, sans-serif;
       font-size: 0.74rem;
       font-weight: 900;
       letter-spacing: 0.16em;
@@ -352,9 +321,7 @@
       color: var(--muted);
     }
 
-    .body-copy p + p {
-      margin-top: 18px;
-    }
+    .body-copy p + p { margin-top: 18px; }
 
     .service-grid {
       display: grid;
@@ -370,25 +337,12 @@
       flex-direction: column;
       justify-content: space-between;
       border-right: 1px solid var(--line);
-      transition: background 200ms ease, transform 200ms ease;
-    }
-
-    .service-card:last-child {
-      border-right: none;
+      transition: all 200ms ease;
     }
 
     .service-card:hover {
       background: rgba(56, 217, 169, 0.15);
       transform: translateY(-4px);
-    }
-
-    .service-index {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.76rem;
-      font-weight: 900;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--blue);
     }
 
     .service-card h3 {
@@ -397,12 +351,6 @@
       line-height: 0.96;
       letter-spacing: -0.04em;
       font-weight: 500;
-    }
-
-    .service-card p {
-      margin-top: 22px;
-      color: var(--muted);
-      font-size: 1rem;
     }
 
     .journey {
@@ -417,40 +365,27 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      color: var(--cream);
-      background:
-        linear-gradient(to top, rgba(11, 31, 58, 0.9), rgba(11, 31, 58, 0.18) 65%),
-        url('https://journeywoman.com/wp-content/uploads/2023/12/Kuala-Lumpur-Malaysia-Buildings.jpg?auto=compress&cs=tinysrgb&w=1400') center/cover;
+      color: white;
+      background: linear-gradient(to top, rgba(11, 31, 58, 0.9), rgba(11, 31, 58, 0.18) 65%),
+                  url('https://journeywoman.com/wp-content/uploads/2023/12/Kuala-Lumpur-Malaysia-Buildings.jpg?auto=compress&cs=tinysrgb&w=1400') center/cover;
       box-shadow: var(--shadow);
     }
 
     .journey-card.small {
-      min-height: 420px;
-      background:
-        linear-gradient(to top, rgba(11, 31, 58, 0.88), rgba(11, 31, 58, 0.18) 62%),
-        url('https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover;
+      background: linear-gradient(to top, rgba(11, 31, 58, 0.88), rgba(11, 31, 58, 0.18) 62%),
+                  url('https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover;
     }
 
     .journey-card.airport {
-      min-height: 420px;
-      background:
-        linear-gradient(to top, rgba(11, 31, 58, 0.88), rgba(11, 31, 58, 0.18) 62%),
-        url('https://raw.githubusercontent.com/matrix010/voxa-academy/main/airport_pickup.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover;
+      background: linear-gradient(to top, rgba(11, 31, 58, 0.88), rgba(11, 31, 58, 0.18) 62%),
+                  url('https://raw.githubusercontent.com/matrix010/voxa-academy/main/airport_pickup.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover;
     }
 
     .journey-card h3 {
-      max-width: 560px;
       font-size: clamp(2rem, 4vw, 4.8rem);
       line-height: 0.92;
       letter-spacing: -0.06em;
       font-weight: 500;
-    }
-
-    .journey-card p {
-      max-width: 520px;
-      margin-top: 20px;
-      color: rgba(255, 255, 255, 0.82);
-      font-size: 1.03rem;
     }
 
     .stats {
@@ -458,16 +393,12 @@
       grid-template-columns: repeat(3, 1fr);
       border: 1px solid var(--line);
       background: var(--deep);
-      color: var(--cream);
+      color: white;
     }
 
     .stat {
       padding: clamp(24px, 4vw, 42px);
       border-right: 1px solid rgba(255, 255, 255, 0.18);
-    }
-
-    .stat:last-child {
-      border-right: none;
     }
 
     .stat strong {
@@ -478,17 +409,7 @@
       font-weight: 500;
     }
 
-    .stat span {
-      display: block;
-      margin-top: 18px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.72rem;
-      font-weight: 900;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.68);
-    }
-
+    /* form area — WhatsApp integrated */
     .form-shell {
       display: grid;
       grid-template-columns: 0.72fr 1fr;
@@ -501,7 +422,7 @@
       top: 112px;
       padding: clamp(28px, 4vw, 48px);
       background: var(--deep);
-      color: var(--cream);
+      color: white;
       box-shadow: var(--shadow);
     }
 
@@ -510,43 +431,17 @@
       font-size: clamp(2.6rem, 5vw, 5.6rem);
       line-height: 0.88;
       letter-spacing: -0.07em;
-      font-weight: 500;
-    }
-
-    .form-intro p {
-      margin-top: 24px;
-      color: rgba(255, 255, 255, 0.76);
-      font-size: 1.05rem;
-    }
-
-    .form-badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: var(--mint);
-      color: var(--ink);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.72rem;
-      font-weight: 900;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
     }
 
     .application-card {
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(255, 255, 255, 0.96);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
-      overflow: hidden;
     }
 
     .form-section {
       padding: clamp(24px, 4vw, 42px);
       border-bottom: 1px solid var(--line);
-    }
-
-    .form-section:last-child {
-      border-bottom: none;
     }
 
     .form-section-title {
@@ -555,8 +450,6 @@
       gap: 14px;
       margin-bottom: 24px;
       font-size: clamp(1.4rem, 2.5vw, 2.1rem);
-      line-height: 1;
-      letter-spacing: -0.035em;
       font-weight: 500;
     }
 
@@ -569,27 +462,23 @@
       border-radius: 999px;
       background: var(--mint);
       color: var(--ink);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.82rem;
+      font-family: Arial, sans-serif;
       font-weight: 900;
-      letter-spacing: 0.08em;
     }
 
     .form-row {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 18px;
       margin-bottom: 18px;
     }
 
-    .form-group.full {
-      grid-column: 1 / -1;
-    }
+    .form-group.full { grid-column: 1 / -1; }
 
     label {
       display: block;
       margin-bottom: 8px;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Arial, sans-serif;
       font-size: 0.76rem;
       font-weight: 900;
       letter-spacing: 0.08em;
@@ -603,28 +492,18 @@
       margin-left: 4px;
     }
 
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       width: 100%;
-      border: 1px solid rgba(16, 32, 51, 0.18);
+      border: 1px solid rgba(16, 32, 51, 0.2);
       border-radius: 22px;
-      background: #ffffff;
-      color: var(--ink);
       padding: 14px 16px;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Arial, sans-serif;
       font-size: 0.95rem;
-      transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+      transition: all 180ms ease;
+      background: white;
     }
 
-    textarea {
-      resize: vertical;
-      min-height: 90px;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
+    input:focus, select:focus, textarea:focus {
       outline: none;
       border-color: var(--blue);
       box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.14);
@@ -640,9 +519,8 @@
       border-radius: 28px;
       background: rgba(219, 234, 254, 0.76);
       color: var(--blue);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.88rem;
       font-weight: 700;
+      font-family: Arial, sans-serif;
     }
 
     .field-note img {
@@ -664,19 +542,12 @@
       border: none;
     }
 
-    .submit-area .button:disabled {
-      opacity: 0.7;
-      cursor: wait;
-      transform: none;
-    }
-
     .alert {
       display: none;
       margin-top: 18px;
       padding: 15px 18px;
       border-radius: 24px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.93rem;
+      font-family: Arial, sans-serif;
       font-weight: 700;
       text-align: left;
     }
@@ -692,12 +563,12 @@
       color: #a93a2a;
       border-left: 6px solid var(--coral);
     }
+
     .footer {
       display: flex;
       justify-content: space-between;
-      gap: 24px;
       padding: 28px clamp(24px, 5vw, 72px);
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Arial, sans-serif;
       font-size: 0.72rem;
       font-weight: 900;
       letter-spacing: 0.14em;
@@ -717,14 +588,13 @@
       justify-content: center;
       border-radius: 999px;
       background: #25d366;
-      color: #ffffff;
-      box-shadow: 0 18px 40px rgba(16, 32, 51, 0.24);
-      transition: transform 180ms ease, box-shadow 180ms ease;
+      color: white;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.24);
+      transition: transform 180ms ease;
     }
 
     .whatsapp-float:hover {
       transform: translateY(-4px) scale(1.04);
-      box-shadow: 0 22px 48px rgba(16, 32, 51, 0.3);
     }
 
     .whatsapp-float svg {
@@ -740,21 +610,17 @@
       padding: 8px 12px;
       border-radius: 999px;
       background: var(--deep);
-      color: #ffffff;
-      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      font-family: Arial, sans-serif;
       font-size: 0.72rem;
       font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
       opacity: 0;
       pointer-events: none;
-      transform: translateX(8px);
-      transition: opacity 180ms ease, transform 180ms ease;
+      transition: opacity 180ms ease;
     }
 
     .whatsapp-float:hover span {
       opacity: 1;
-      transform: translateX(0);
     }
 
     .reveal {
@@ -769,412 +635,239 @@
     }
 
     @media (max-width: 1060px) {
-      .hero,
-      .split,
-      .journey,
-      .form-shell,
-      .section-header {
+      .hero, .split, .journey, .form-shell, .section-header {
         grid-template-columns: 1fr;
       }
-
-      .hero-visual {
-        border-left: none;
-        border-top: 1px solid var(--line);
-      }
-
-      .form-intro {
-        position: static;
-      }
-
-      .body-copy {
-        columns: 1;
-      }
+      .hero-visual { border-left: none; border-top: 1px solid var(--line); }
+      .form-intro { position: static; }
+      .body-copy { columns: 1; }
     }
 
     @media (max-width: 720px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero-copy {
-        padding-top: 54px;
-      }
-
-      .hero-note,
-      .form-row,
-      .service-grid,
-      .stats,
-      .journey {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-visual {
-        min-height: 520px;
-      }
-
-      .service-card,
-      .stat {
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .stat {
-        border-bottom-color: rgba(255, 255, 255, 0.18);
-      }
-
-      .footer {
-        flex-direction: column;
-      }
+      .nav-links { display: none; }
+      .service-grid, .stats, .journey, .form-row { grid-template-columns: 1fr; }
+      .service-card { border-right: none; border-bottom: 1px solid var(--line); }
+      .footer { flex-direction: column; gap: 12px; }
     }
   </style>
 </head>
 <body>
-  <main class="page">
-    <nav class="nav" aria-label="Primary navigation">
-      <a class="brand" href="#top">VOXA Academy</a>
-      <div class="nav-links">
-  <a href="#service">Service</a>
-  <a href="#journey">Journey</a>
-  <a href="#apply">Apply</a>
-  <a href="student-portal.html">Portal</a>
-</div>
-    </nav>
+<main class="page">
+  <nav class="nav">
+    <a class="brand" href="#top">Kalimh Academy</a>
+    <div class="nav-links">
+      <a href="#service">Service</a>
+      <a href="#journey">Journey</a>
+      <a href="#apply">Apply</a>
+      
+    </div>
+  </nav>
 
-    <section class="hero" id="top">
-      <div class="hero-copy">
-        <div>
-          <span class="kicker">Malaysia ESL Concierge</span>
-          <h1>Study English. Arrive prepared. Stay with confidence.</h1>
-          <p class="hero-subtitle">VOXA Academy helps international students and families arrange ESL enrollment, verified accommodation, and student support in Malaysia through one guided concierge experience.</p>
-          <div class="hero-actions">
-		  <a href="#apply" class="button primary">Start application</a>
-          <a href="student-portal.html" class="button secondary">Student portal</a>
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <div>
+        <span class="kicker">Malaysia ESL Concierge</span>
+        <h1>Study English. Arrive prepared. Stay with confidence.</h1>
+        <p class="hero-subtitle">Kalimh Academy helps international students and families arrange ESL enrollment, verified accommodation, and student support in Malaysia through one guided concierge experience.</p>
+        <div class="hero-actions">
+          <a href="#apply" class="button primary">Start application</a>
           <a href="#service" class="button secondary">Explore support</a>
         </div>
-        </div>
-
-        <div class="hero-note reveal">
-          <strong>24h</strong>
-          <p>Enrollment follow-up and accommodation matching are organized quickly so students can begin their Malaysia study plan with clarity.</p>
-        </div>
       </div>
+      <div class="hero-note reveal">
+        <strong>24h</strong>
+        <p>Enrollment follow-up and accommodation matching are organized quickly so students can begin their Malaysia study plan with clarity.</p>
+      </div>
+    </div>
+    <aside class="hero-visual">
+      <div class="cover-card">
+        <span class="cover-kicker">ESL · Stay · Support</span>
+        <div class="cover-title">Your first chapter in Malaysia, carefully arranged.</div>
+        <span class="cover-footer">For students, parents, and international families</span>
+      </div>
+    </aside>
+  </section>
 
-      <aside class="hero-visual" aria-label="Kuala Lumpur Malaysia study and accommodation artwork">
-        <div class="cover-card">
-          <span class="cover-kicker">ESL · Stay · Support</span>
-          <div class="cover-title">Your first chapter in Malaysia, carefully arranged.</div>
-          <span class="cover-footer">For students, parents, and international families</span>
-        </div>
+  <section class="section" id="service">
+    <div class="section-header reveal">
+      <span class="section-number">The promise</span>
+      <h2 class="section-title">A calmer way to plan language study abroad.</h2>
+    </div>
+    <div class="split">
+      <div class="pullquote reveal"><p>From course selection to accommodation planning, every detail is organized around safety, clarity, and study confidence.</p><span>Student concierge</span></div>
+      <div class="body-copy reveal"><p>Studying abroad should feel exciting, not confusing. Kalimh Academy gathers the essential steps into one guided process: ESL course details, accommodation preferences, and student support.</p><p>The experience is designed for students and families seeking private rooms, studios, or whole-house stays near Kuala Lumpur city centre.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header reveal"><span class="section-number">What we arrange</span><h2 class="section-title">One concierge flow, focused on study and stay.</h2></div>
+    <div class="service-grid reveal">
+      <article class="service-card"><span class="service-index">Enrollment</span><div><h3>Course details made clear.</h3><p>Choose ESL duration, preferred start date, and English level in one structured application.</p></div></article>
+      <article class="service-card"><span class="service-index">Accommodation</span><div><h3>Stay options matched to your life.</h3><p>Select a studio, private room, or whole house, with preferences for Kuala Lumpur city centre, quiet study, parking, and family size.</p></div></article>
+    </div>
+  </section>
+
+  <section class="section" id="journey">
+    <div class="journey">
+      <article class="journey-card reveal"><h3>Designed for students who need more than a course booking.</h3><p>Kalimh Academy supports the full study-abroad story: where you study, where you stay, and who responds when something needs attention.</p></article>
+      <article class="journey-card small reveal"><h3>Verified comfort, practical care.</h3><p>Accommodation preferences are reviewed for safety, comfort, student lifestyle, and family requirements.</p></article>
+      <article class="journey-card airport reveal"><h3>Airport pickup support.</h3><p>Optional airport pickup can help students and families arrive in Kuala Lumpur with a smoother first-day experience.</p></article>
+    </div>
+  </section>
+
+  <section class="section"><div class="stats reveal"><div class="stat"><strong>4h</strong><span>Enrollment response target</span></div><div class="stat"><strong>24h</strong><span>Accommodation match target</span></div><div class="stat"><strong>3</strong><span>Support workflow areas</span></div></div></section>
+
+  <!-- WhatsApp Application Form -->
+  <section class="section" id="apply">
+    <div class="form-shell">
+      <aside class="form-intro reveal">
+        <span class="form-badge" style="background:var(--mint); padding:6px 14px; border-radius:999px;">Application</span>
+        <h2>Tell us what your Malaysia stay needs.</h2>
+        <p>Submit your details and they will be forwarded directly via WhatsApp to our concierge team. We’ll reach out within 24 hours.</p>
       </aside>
-    </section>
 
-    <section class="section" id="service">
-      <div class="section-header reveal">
-        <span class="section-number">The promise</span>
-        <h2 class="section-title">A calmer way to plan language study abroad.</h2>
-      </div>
-
-      <div class="split">
-        <div class="pullquote reveal">
-          <p>From course selection to accommodation planning, every detail is organized around safety, clarity, and study confidence.</p>
-          <span>Student concierge</span>
+      <form class="application-card reveal" id="voxaWhatsAppForm">
+        <div class="form-section">
+          <h3 class="form-section-title"><span>01</span> Personal & course details</h3>
+          <div class="form-row"><div class="form-group full"><label class="required" for="fullName">Full name</label><input type="text" id="fullName" placeholder="Aisha Binti Rahman" required /></div></div>
+          <div class="form-row"><div class="form-group"><label class="required" for="email">Email</label><input type="email" id="email" placeholder="student@example.com" required /></div><div class="form-group"><label class="required" for="phone">WhatsApp / Phone</label><input type="tel" id="phone" placeholder="+60 12-345 6789" required /></div></div>
+          <div class="form-row"><div class="form-group"><label class="required" for="dob">Date of birth</label><input type="date" id="dob" required /></div><div class="form-group"><label class="required" for="courseDuration">ESL course duration</label><select id="courseDuration" required><option value="">Select duration</option><option>1 month</option><option>2 months</option><option>3 months</option><option>4 months</option><option>6 months</option><option>8 months</option><option>10 months</option><option>12 months</option></select></div></div>
+          <div class="form-row"><div class="form-group"><label class="required" for="startDate">Preferred start date</label><input type="date" id="startDate" required /></div><div class="form-group"><label for="englishLevel">English level</label><select id="englishLevel"><option>Beginner</option><option selected>Intermediate</option><option>Advanced</option></select></div></div>
         </div>
-        <div class="body-copy reveal">
-          <p>Studying abroad should feel exciting, not confusing. VOXA Academy gathers the essential steps into one guided process: ESL course details, accommodation preferences, and student support.</p>
-          <p>The experience is designed for students and families seeking private rooms, studios, or whole-house stays near Kuala Lumpur city centre.</p>
+
+        <div class="form-section">
+          <h3 class="form-section-title"><span>02</span> Accommodation preferences</h3>
+          <div class="form-row"><div class="form-group"><label class="required" for="accommodationType">Accommodation type</label><select id="accommodationType" required><option value="">Select accommodation</option><option value="studio">Studio — private and self-contained</option><option value="private_room">Private room — shared living or kitchen</option><option value="whole_house">Whole house / apartment — private for family</option></select></div><div class="form-group"><label for="area">Preferred area</label><select id="area"><option>Kuala Lumpur city centre</option></select></div></div>
+          <div class="form-row" id="groupSizeField" style="display: none;"><div class="form-group full"><label for="groupSize">Number of family members / group size</label><input type="number" id="groupSize" min="1" max="12" placeholder="e.g., 4" /></div></div>
+          <div class="form-row"><div class="form-group full"><label for="accommodationRequests">Special requests</label><textarea id="accommodationRequests" placeholder="e.g., quiet study space, ground floor, parking needed"></textarea></div></div>
+          <div class="field-note"><img src="https://journeywoman.com/wp-content/uploads/2023/12/Kuala-Lumpur-Malaysia-Buildings.jpg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop" alt="KL area" /> Verified accommodations are reviewed for safety, comfort, and student suitability.</div>
         </div>
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="section-header reveal">
-        <span class="section-number">What we arrange</span>
-        <h2 class="section-title">One concierge flow, focused on study and stay.</h2>
-      </div>
-
-      <div class="service-grid reveal">
-        <article class="service-card">
-          <span class="service-index">Enrollment</span>
-          <div>
-            <h3>Course details made clear.</h3>
-            <p>Choose ESL duration, preferred start date, and English level in one structured application.</p>
-          </div>
-        </article>
-        <article class="service-card">
-          <span class="service-index">Accommodation</span>
-          <div>
-            <h3>Stay options matched to your life.</h3>
-            <p>Select a studio, private room, or whole house, with preferences for Kuala Lumpur city centre, quiet study, parking, and family size.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="journey">
-      <div class="journey">
-        <article class="journey-card reveal">
-          <h3>Designed for students who need more than a course booking.</h3>
-          <p>VOXA Academy supports the full study-abroad story: where you study, where you stay, and who responds when something needs attention.</p>
-        </article>
-        <article class="journey-card small reveal">
-          <h3>Verified comfort, practical care.</h3>
-          <p>Accommodation preferences are reviewed for safety, comfort, student lifestyle, and family requirements.</p>
-        </article>
-        <article class="journey-card airport reveal">
-          <h3>Airport pickup support.</h3>
-          <p>Optional airport pickup can help students and families arrive in Kuala Lumpur with a smoother first-day experience.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="stats reveal">
-        <div class="stat">
-          <strong>4h</strong>
-          <span>Enrollment response target</span>
+        <div class="submit-area">
+          <button class="button mint" type="button" id="whatsappSubmitBtn">📲 Submit & forward to WhatsApp</button>
+          <div id="waFormFeedback" class="alert"></div>
+          <p style="font-size:0.75rem; margin-top:16px; color:#4a5b74;">By submitting, your details will be shared via WhatsApp message to Kalimhconcierge. No data stored on server.</p>
         </div>
-        <div class="stat">
-          <strong>24h</strong>
-          <span>Accommodation match target</span>
-        </div>
-        <div class="stat">
-          <strong>3</strong>
-          <span>Support workflow areas</span>
-        </div>
-      </div>
-    </section>
+      </form>
+    </div>
+  </section>
 
-    <section class="section" id="apply">
-      <div class="form-shell">
-        <aside class="form-intro reveal">
-          <span class="form-badge">Application</span>
-          <h2>Tell us what your Malaysia stay needs.</h2>
-          <p>Complete the essentials below. The concierge workflow will route your details to enrollment, accommodation, and student support teams.</p>
-        </aside>
+  <footer class="footer"><span>Kalimh Academy / Malaysia ESL Concierge</span><span>Enrollment · Accommodation · Student Support</span></footer>
 
-        <form class="application-card reveal" id="applicationForm">
-          <div class="form-section">
-            <h3 class="form-section-title"><span>01</span> Personal & course details</h3>
-            <div class="form-row">
-              <div class="form-group full">
-                <label class="required" for="fullName">Full name</label>
-                <input type="text" id="fullName" placeholder="Aisha Binti Rahman" required />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="required" for="email">Email</label>
-                <input type="email" id="email" placeholder="student@example.com" required />
-              </div>
-              <div class="form-group">
-                <label class="required" for="phone">WhatsApp / Phone</label>
-                <input type="tel" id="phone" placeholder="+60 12-345 6789" required />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="required" for="dob">Date of birth</label>
-                <input type="date" id="dob" required />
-              </div>
-              <div class="form-group">
-                <label class="required" for="courseDuration">ESL course duration</label>
-                <select id="courseDuration" required>
-                  <option value="">Select duration</option>
-                  <option value="1 month">1 month</option>
-                  <option value="2 months">2 months</option>
-                  <option value="3 months">3 months</option>
-                  <option value="4 months">4 months</option>
-                  <option value="6 months">6 months</option>
-                  <option value="8 months">8 months</option>
-                  <option value="10 months">10 months</option>
-                  <option value="12 months">12 months</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="required" for="startDate">Preferred start date</label>
-                <input type="date" id="startDate" required />
-              </div>
-              <div class="form-group">
-                <label for="englishLevel">English level</label>
-                <select id="englishLevel">
-                  <option>Beginner</option>
-                  <option selected>Intermediate</option>
-                  <option>Advanced</option>
-                </select>
-              </div>
-            </div>
-          </div>
+  <a class="whatsapp-float" href="https://wa.me/14387227303?text=Hello%20VOXA%20Academy%2C%20I%20want%20to%20ask%20about%20ESL%20study%20and%20accommodation." target="_blank" rel="noopener noreferrer"><span>WhatsApp</span><svg viewBox="0 0 32 32"><path d="M16.02 3.2A12.77 12.77 0 0 0 5.1 22.56L3.2 29l6.62-1.74a12.73 12.73 0 0 0 6.2 1.58h.01A12.82 12.82 0 0 0 28.8 16.03 12.8 12.8 0 0 0 16.02 3.2Zm0 23.45h-.01a10.57 10.57 0 0 1-5.39-1.47l-.39-.23-3.93 1.03 1.05-3.83-.25-.4a10.58 10.58 0 1 1 8.92 4.9Zm5.8-7.92c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1.01 1.24-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.88-1.77-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.71-.98-2.35-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.56.08-.85.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.42 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.15-1.51.26-.74.26-1.38.18-1.51-.08-.13-.29-.21-.61-.37Z"/></svg></a>
+</main>
 
-          <div class="form-section">
-            <h3 class="form-section-title"><span>02</span> Accommodation preferences</h3>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="required" for="accommodationType">Accommodation type</label>
-                <select id="accommodationType" required>
-                  <option value="">Select accommodation</option>
-                  <option value="studio">Studio — private and self-contained</option>
-                  <option value="private_room">Private room — shared living or kitchen</option>
-                  <option value="whole_house">Whole house / apartment — private for family</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="area">Preferred area</label>
-                <select id="area">
-                  <option>Kuala Lumpur city centre</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-row" id="groupSizeField" style="display: none;">
-              <div class="form-group full">
-                <label for="groupSize">Number of family members / group size</label>
-                <input type="number" id="groupSize" min="1" max="12" placeholder="e.g., 4" />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group full">
-                <label for="accommodationRequests">Special requests</label>
-                <textarea id="accommodationRequests" placeholder="e.g., quiet study space, ground floor, parking needed"></textarea>
-              </div>
-            </div>
-            <div class="field-note">
-              <img src="https://journeywoman.com/wp-content/uploads/2023/12/Kuala-Lumpur-Malaysia-Buildings.jpg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop" alt="Kuala Lumpur Malaysia accommodation area" />
-              Verified accommodations are reviewed for safety, comfort, and student suitability.
-            </div>
-          </div>
+<script>
+  // Intersection Observer for reveal animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-          <div class="submit-area">
-            <button class="button mint" type="button" id="submitBtn">Submit application</button>
-            <div id="formFeedback" class="alert"></div>
-          </div>
-        </form>
-      </div>
-    </section>
+  // WhatsApp Integration — pure forward to WhatsApp number
+  const WA_BUSINESS_NUMBER = "14387227303";  // official KalimhWhatsApp number (+1 438-722-7303)
+  const submitBtn = document.getElementById('whatsappSubmitBtn');
+  const feedbackDiv = document.getElementById('waFormFeedback');
+  const accSelect = document.getElementById('accommodationType');
+  const groupDiv = document.getElementById('groupSizeField');
+  const groupSizeInput = document.getElementById('groupSize');
 
-    <footer class="footer">
-      <span>VOXA Academy / Malaysia ESL Concierge</span>
-      <span>Enrollment · Accommodation · Student Support</span>
-    </footer>
-
-    <a
-      class="whatsapp-float"
-      href="https://wa.me/14387227303?text=Hello%20VOXA%20Academy%2C%20I%20want%20to%20ask%20about%20ESL%20study%20and%20accommodation."
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Contact VOXA Academy on WhatsApp"
-    >
-      <span>WhatsApp</span>
-      <svg viewBox="0 0 32 32" aria-hidden="true">
-        <path d="M16.02 3.2A12.77 12.77 0 0 0 5.1 22.56L3.2 29l6.62-1.74a12.73 12.73 0 0 0 6.2 1.58h.01A12.82 12.82 0 0 0 28.8 16.03 12.8 12.8 0 0 0 16.02 3.2Zm0 23.45h-.01a10.57 10.57 0 0 1-5.39-1.47l-.39-.23-3.93 1.03 1.05-3.83-.25-.4a10.58 10.58 0 1 1 8.92 4.9Zm5.8-7.92c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1.01 1.24-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.88-1.77-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.71-.98-2.35-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.56.08-.85.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.42 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.15-1.51.26-.74.26-1.38.18-1.51-.08-.13-.29-.21-.61-.37Z" />
-      </svg>
-    </a>
-  </main>
-
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
-
-    const submitBtn = document.getElementById('submitBtn');
-    const feedbackDiv = document.getElementById('formFeedback');
-    const accSelect = document.getElementById('accommodationType');
-    const groupDiv = document.getElementById('groupSizeField');
-    const groupSizeInput = document.getElementById('groupSize');
-
-    function showMessage(message, type = 'success') {
-      feedbackDiv.innerHTML = message;
-      feedbackDiv.className = `alert alert-${type}`;
-      feedbackDiv.style.display = 'block';
-      feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setTimeout(() => { feedbackDiv.style.display = 'none'; }, 7000);
+  function toggleGroupSizeField() {
+    if (accSelect.value === 'whole_house') {
+      groupDiv.style.display = 'grid';
+      groupSizeInput.setAttribute('required', 'required');
+    } else {
+      groupDiv.style.display = 'none';
+      groupSizeInput.removeAttribute('required');
+      groupSizeInput.value = '';
     }
+  }
+  accSelect.addEventListener('change', toggleGroupSizeField);
+  toggleGroupSizeField();
 
-    function toggleGroupSize() {
-      if (accSelect.value === 'whole_house') {
-        groupDiv.style.display = 'grid';
-        groupSizeInput.setAttribute('required', 'required');
-      } else {
-        groupDiv.style.display = 'none';
-        groupSizeInput.removeAttribute('required');
-        groupSizeInput.value = '';
-      }
+  function showMessage(msg, type = 'success') {
+    feedbackDiv.innerHTML = msg;
+    feedbackDiv.className = `alert alert-${type}`;
+    feedbackDiv.style.display = 'block';
+    feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    setTimeout(() => { feedbackDiv.style.display = 'none'; }, 6000);
+  }
+
+  function formatWhatsAppMessage(data) {
+    let groupInfo = '';
+    if (data.accommodationType === 'whole_house' && data.groupSize) groupInfo = `\n👨‍👩‍👧‍👦 Group/Family size: ${data.groupSize}`;
+    let requests = data.accommodationRequests ? `\n📝 Special requests: ${data.accommodationRequests}` : '';
+    
+    return `🏫 *NEW KalimhAPPLICATION* 🏫
+        
+*👤 STUDENT INFO*
+Name: ${data.fullName}
+Email: ${data.email}
+WhatsApp: ${data.phone}
+DOB: ${data.dob}
+English level: ${data.englishLevel}
+
+*📚 ESL COURSE*
+Duration: ${data.courseDuration}
+Start date: ${data.startDate}
+
+*🏠 ACCOMMODATION*
+Type: ${data.accommodationType}
+Area: ${data.area}${groupInfo}${requests}
+
+✅ Application sent via website. Please contact student.`;
+  }
+
+  function getFormData() {
+    return {
+      fullName: document.getElementById('fullName').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      dob: document.getElementById('dob').value,
+      englishLevel: document.getElementById('englishLevel').value,
+      courseDuration: document.getElementById('courseDuration').value,
+      startDate: document.getElementById('startDate').value,
+      accommodationType: accSelect.value,
+      area: document.getElementById('area').value,
+      accommodationRequests: document.getElementById('accommodationRequests').value.trim(),
+      groupSize: groupSizeInput.value || ''
+    };
+  }
+
+  function validateFormData(data) {
+    if (!data.fullName) { showMessage('Full name is required.', 'error'); return false; }
+    if (!data.email || !data.email.includes('@')) { showMessage('Valid email is required.', 'error'); return false; }
+    if (!data.phone) { showMessage('WhatsApp/Phone number is required.', 'error'); return false; }
+    if (!data.dob) { showMessage('Date of birth is required.', 'error'); return false; }
+    if (!data.courseDuration) { showMessage('Please select ESL course duration.', 'error'); return false; }
+    if (!data.startDate) { showMessage('Preferred start date is required.', 'error'); return false; }
+    if (!data.accommodationType) { showMessage('Please select accommodation type.', 'error'); return false; }
+    if (data.accommodationType === 'whole_house' && (!data.groupSize || data.groupSize < 1)) {
+      showMessage('Please enter family/group size for whole house.', 'error');
+      return false;
     }
+    return true;
+  }
 
-    function validateForm() {
-      const fullName = document.getElementById('fullName').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const dob = document.getElementById('dob').value;
-      const courseDur = document.getElementById('courseDuration').value;
-      const startDate = document.getElementById('startDate').value;
-      const accType = accSelect.value;
+  submitBtn.addEventListener('click', () => {
+    const formData = getFormData();
+    if (!validateFormData(formData)) return;
 
-      if (!fullName) { showMessage('Full name is required.', 'error'); return false; }
-      if (!email || !email.includes('@')) { showMessage('A valid email is required.', 'error'); return false; }
-      if (!phone) { showMessage('WhatsApp or phone number is required.', 'error'); return false; }
-      if (!dob) { showMessage('Date of birth is required.', 'error'); return false; }
-      if (!courseDur) { showMessage('Please select an ESL course duration.', 'error'); return false; }
-      if (!startDate) { showMessage('Preferred start date is required.', 'error'); return false; }
-      if (!accType) { showMessage('Please select an accommodation type.', 'error'); return false; }
-
-      if (accType === 'whole_house') {
-        const groupSize = Number(groupSizeInput.value);
-        if (!groupSize || groupSize < 1) {
-          showMessage('Please enter the family or group size.', 'error');
-          return false;
-        }
-      }
-
-      return true;
-    }
-
-    function collectFormData() {
-      return {
-        fullName: document.getElementById('fullName').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-        dob: document.getElementById('dob').value,
-        englishLevel: document.getElementById('englishLevel').value,
-        courseDuration: document.getElementById('courseDuration').value,
-        startDate: document.getElementById('startDate').value,
-        accommodationType: accSelect.value,
-        area: document.getElementById('area').value,
-        accommodationRequests: document.getElementById('accommodationRequests').value.trim(),
-        groupSize: groupSizeInput.value || null
-      };
-    }
-
-    accSelect.addEventListener('change', toggleGroupSize);
-
-    submitBtn.addEventListener('click', async () => {
-      if (!validateForm()) return;
-
-      const formData = collectFormData();
-      const originalText = submitBtn.innerText;
-      submitBtn.innerText = 'Processing...';
-      submitBtn.disabled = true;
-
-      try {
-        console.log('VOXA Academy submission:', formData);
-        await new Promise((resolve) => setTimeout(resolve, 700));
-        showMessage(`Application received for <strong>${formData.fullName}</strong>. Enrollment follow-up and accommodation matching will begin shortly.`, 'success');
-      } catch (error) {
-        console.error(error);
-        showMessage('Submission error. Please try again or contact support.', 'error');
-      } finally {
-        submitBtn.innerText = originalText;
-        submitBtn.disabled = false;
-      }
-    });
-
-    toggleGroupSize();
-  </script>
+    const waMessage = formatWhatsAppMessage(formData);
+    const encodedMsg = encodeURIComponent(waMessage);
+    const whatsappUrl = `https://wa.me/${WA_BUSINESS_NUMBER}?text=${encodedMsg}`;
+    
+    // open WhatsApp in new tab
+    window.open(whatsappUrl, '_blank');
+    
+    // show friendly success
+    showMessage(`✅ Application opened in WhatsApp! Please send the pre-filled message to Kalimh Academy. We'll respond within 24h.`, 'success');
+    
+    // optionally clear group field but keep data visible
+    setTimeout(() => {
+      // optional gentle reset: do not clear all, just mark that it's forwarded
+    }, 100);
+  });
+</script>
 </body>
 </html>
