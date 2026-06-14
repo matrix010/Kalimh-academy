@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HSSBHJYQX3"></script>
@@ -12,7 +12,10 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Kalimh Academy — Malaysia ESL + Accommodation Concierge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <title>أكاديمية كلمة | Kalimh Academy — Malaysia ESL + Accommodation Concierge</title>
   <style>
     * {
       margin: 0;
@@ -494,9 +497,10 @@
       font-weight: 500;
     }
 
-    .form-section-title span {
+    .form-section-title .step {
       width: 38px;
       height: 38px;
+      flex: 0 0 38px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -505,6 +509,10 @@
       color: var(--ink);
       font-family: Arial, sans-serif;
       font-weight: 900;
+    }
+
+    .form-section-title .section-label {
+      display: inline-block;
     }
 
     .form-row {
@@ -675,6 +683,132 @@
       transform: translateY(0);
     }
 
+
+
+    /* bilingual Arabic / English support */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .lang-toggle {
+      min-height: 38px;
+      padding: 0 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .lang-toggle:hover {
+      transform: translateY(-2px);
+      border-color: var(--blue);
+      background: var(--sky);
+    }
+
+    html[lang="ar"] body,
+    html[lang="ar"] input,
+    html[lang="ar"] select,
+    html[lang="ar"] textarea,
+    html[lang="ar"] button,
+    html[lang="ar"] .brand,
+    html[lang="ar"] .nav-links,
+    html[lang="ar"] .button,
+    html[lang="ar"] .kicker,
+    html[lang="ar"] .section-number,
+    html[lang="ar"] label,
+    html[lang="ar"] .footer,
+    html[lang="ar"] .cover-kicker,
+    html[lang="ar"] .cover-footer,
+    html[lang="ar"] .field-note,
+    html[lang="ar"] .alert {
+      font-family: 'Tajawal', Arial, Helvetica, sans-serif;
+    }
+
+    html[lang="ar"] body {
+      direction: rtl;
+      text-align: right;
+    }
+
+    html[lang="ar"] h1,
+    html[lang="ar"] h2,
+    html[lang="ar"] h3,
+    html[lang="ar"] .section-title,
+    html[lang="ar"] .cover-title,
+    html[lang="ar"] .pullquote p,
+    html[lang="ar"] .journey-card h3,
+    html[lang="ar"] .service-card h3,
+    html[lang="ar"] .form-intro h2 {
+      font-family: 'Tajawal', Arial, Helvetica, sans-serif;
+      letter-spacing: -0.035em;
+      line-height: 1;
+    }
+
+    html[lang="ar"] h1 {
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+    }
+
+    html[lang="ar"] .brand {
+      border-left: none;
+      border-right: 2px solid var(--mint);
+      padding-left: 0;
+      padding-right: 12px;
+      letter-spacing: 0.04em;
+      text-transform: none;
+      font-size: 1rem;
+    }
+
+    html[lang="ar"] .nav-links,
+    html[lang="ar"] .button,
+    html[lang="ar"] .kicker,
+    html[lang="ar"] .section-number,
+    html[lang="ar"] label,
+    html[lang="ar"] .footer,
+    html[lang="ar"] .cover-kicker,
+    html[lang="ar"] .cover-footer {
+      letter-spacing: 0.02em;
+      text-transform: none;
+    }
+
+    html[lang="ar"] .hero-visual {
+      border-left: none;
+      border-right: 1px solid var(--line);
+    }
+
+    html[lang="ar"] .service-card {
+      border-right: none;
+      border-left: 1px solid var(--line);
+    }
+
+    html[lang="ar"] .stat {
+      border-right: none;
+      border-left: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    html[lang="ar"] .required::after {
+      margin-left: 0;
+      margin-right: 4px;
+    }
+
+    html[lang="ar"] .alert {
+      text-align: right;
+      border-left: none;
+      border-right: 6px solid currentColor;
+    }
+
+    html[lang="ar"] .whatsapp-float span {
+      right: auto;
+      left: 70px;
+    }
+
     @media (max-width: 1060px) {
       .hero, .split, .journey, .form-shell, .section-header {
         grid-template-columns: 1fr;
@@ -686,6 +820,8 @@
 
     @media (max-width: 720px) {
       .nav-links { display: none; }
+      .nav-actions { gap: 8px; }
+      .lang-toggle { display: inline-flex; align-items: center; min-height: 34px; padding: 0 12px; font-size: 0.7rem; }
       .brand-wrapper { gap: 8px; }
       .brand { font-size: 0.7rem; letter-spacing: 0.12em; padding-left: 8px; }
       .logo-icon { width: 40px; height: 40px; }
@@ -702,107 +838,110 @@
       <div class="logo-icon" aria-label="Kalimh Academy logo">
         <img class="logo-image" src="logo.jpeg" alt="Kalimh Academy Logo">
       </div>
-      <a class="brand" href="#top">Kalimh Academy</a>
+      <a class="brand" href="#top" data-en="Kalimh Academy" data-ar="أكاديمية كلمة">Kalimh Academy</a>
     </div>
-    <div class="nav-links">
-      <a href="#service">Service</a>
-      <a href="#journey">Journey</a>
-      <a href="#apply">Apply</a>
+    <div class="nav-actions">
+      <div class="nav-links">
+        <a href="#service" data-en="Service" data-ar="الخدمات">Service</a>
+        <a href="#journey" data-en="Journey" data-ar="الرحلة">Journey</a>
+        <a href="#apply" data-en="Apply" data-ar="التقديم">Apply</a>
+      </div>
+      <button class="lang-toggle" type="button" id="languageToggle" data-en="العربية" data-ar="English">العربية</button>
     </div>
   </nav>
 
   <section class="hero" id="top">
     <div class="hero-copy">
       <div>
-        <span class="kicker">Malaysia ESL Concierge</span>
-        <h1>Study English. Arrive prepared. Stay with confidence.</h1>
-        <p class="hero-subtitle">Kalimh Academy helps international students and families arrange ESL enrollment, verified accommodation, and student support in Malaysia through one guided concierge experience.</p>
+        <span class="kicker" data-en="Malaysia ESL Concierge" data-ar="خدمة دراسة اللغة الإنجليزية في ماليزيا">Malaysia ESL Concierge</span>
+        <h1 data-en="Study English. Arrive prepared. Stay with confidence." data-ar="تعلّم الإنجليزية. ابدأ رحلتك مستعدًا. واسكن بثقة.">Study English. Arrive prepared. Stay with confidence.</h1>
+        <p class="hero-subtitle" data-en="Kalimh Academy helps international students and families arrange ESL enrollment, verified accommodation, and student support in Malaysia through one guided concierge experience." data-ar="تساعد أكاديمية كلمة الطلاب الدوليين والعائلات على ترتيب التسجيل في دورات اللغة الإنجليزية، والسكن الموثوق، والدعم الطلابي في ماليزيا من خلال تجربة منظمة وواضحة.">Kalimh Academy helps international students and families arrange ESL enrollment, verified accommodation, and student support in Malaysia through one guided concierge experience.</p>
         <div class="hero-actions">
-          <a href="#apply" class="button primary">Start application</a>
-          <a href="#service" class="button secondary">Explore support</a>
+          <a href="#apply" class="button primary" data-en="Start application" data-ar="ابدأ التقديم">Start application</a>
+          <a href="#service" class="button secondary" data-en="Explore support" data-ar="استكشف الدعم">Explore support</a>
         </div>
       </div>
       <div class="hero-note reveal">
         <strong>24h</strong>
-        <p>Enrollment follow-up and accommodation matching are organized quickly so students can begin their Malaysia study plan with clarity.</p>
+        <p data-en="Enrollment follow-up and accommodation matching are organized quickly so students can begin their Malaysia study plan with clarity." data-ar="نرتّب متابعة التسجيل ومطابقة السكن بسرعة، حتى يبدأ الطالب خطته الدراسية في ماليزيا بوضوح وثقة.">Enrollment follow-up and accommodation matching are organized quickly so students can begin their Malaysia study plan with clarity.</p>
       </div>
     </div>
     <aside class="hero-visual">
       <div class="cover-card">
-        <span class="cover-kicker">ESL · Stay · Support</span>
-        <div class="cover-title">Your first chapter in Malaysia, carefully arranged.</div>
-        <span class="cover-footer">For students, parents, and international families</span>
+        <span class="cover-kicker" data-en="ESL · Stay · Support" data-ar="لغة إنجليزية · سكن · دعم">ESL · Stay · Support</span>
+        <div class="cover-title" data-en="Your first chapter in Malaysia, carefully arranged." data-ar="بدايتك الأولى في ماليزيا، مرتبة بعناية.">Your first chapter in Malaysia, carefully arranged.</div>
+        <span class="cover-footer" data-en="For students, parents, and international families" data-ar="للطلاب، وأولياء الأمور، والعائلات الدولية">For students, parents, and international families</span>
       </div>
     </aside>
   </section>
 
   <section class="section" id="service">
     <div class="section-header reveal">
-      <span class="section-number">The promise</span>
-      <h2 class="section-title">A calmer way to plan language study abroad.</h2>
+      <span class="section-number" data-en="The promise" data-ar="وعدنا">The promise</span>
+      <h2 class="section-title" data-en="A calmer way to plan language study abroad." data-ar="طريقة أوضح وأسهل للتخطيط لدراسة اللغة في الخارج.">A calmer way to plan language study abroad.</h2>
     </div>
     <div class="split">
-      <div class="pullquote reveal"><p>From course selection to accommodation planning, every detail is organized around safety, clarity, and study confidence.</p><span>Student concierge</span></div>
-      <div class="body-copy reveal"><p>Studying abroad should feel exciting, not confusing. Kalimh Academy gathers the essential steps into one guided process: ESL course details, accommodation preferences, and student support.</p><p>The experience is designed for students and families seeking private rooms, studios, or whole-house stays near Kuala Lumpur city centre.</p></div>
+      <div class="pullquote reveal"><p data-en="From course selection to accommodation planning, every detail is organized around safety, clarity, and study confidence." data-ar="من اختيار الدورة إلى ترتيب السكن، ننظّم كل التفاصيل حول السلامة والوضوح والثقة الدراسية.">From course selection to accommodation planning, every detail is organized around safety, clarity, and study confidence.</p><span data-en="Student concierge" data-ar="خدمة طلابية متكاملة">Student concierge</span></div>
+      <div class="body-copy reveal"><p data-en="Studying abroad should feel exciting, not confusing. Kalimh Academy gathers the essential steps into one guided process: ESL course details, accommodation preferences, and student support." data-ar="الدراسة في الخارج يجب أن تكون تجربة مشجعة، لا مربكة. تجمع أكاديمية كلمة الخطوات الأساسية في مسار واحد واضح: تفاصيل دورة اللغة الإنجليزية، وتفضيلات السكن، والدعم الطلابي.">Studying abroad should feel exciting, not confusing. Kalimh Academy gathers the essential steps into one guided process: ESL course details, accommodation preferences, and student support.</p><p data-en="The experience is designed for students and families seeking private rooms, studios, or whole-house stays near Kuala Lumpur city centre." data-ar="صُممت التجربة للطلاب والعائلات الباحثين عن غرفة خاصة، أو استوديو، أو شقة كاملة بالقرب من وسط مدينة كوالالمبور.">The experience is designed for students and families seeking private rooms, studios, or whole-house stays near Kuala Lumpur city centre.</p></div>
     </div>
   </section>
 
   <section class="section">
-    <div class="section-header reveal"><span class="section-number">What we arrange</span><h2 class="section-title">One concierge flow, focused on study and stay.</h2></div>
+    <div class="section-header reveal"><span class="section-number" data-en="What we arrange" data-ar="ما الذي نرتبه">What we arrange</span><h2 class="section-title" data-en="One concierge flow, focused on study and stay." data-ar="مسار واحد منظم يركز على الدراسة والسكن.">One concierge flow, focused on study and stay.</h2></div>
     <div class="service-grid reveal">
-      <article class="service-card"><span class="service-index">Enrollment</span><div><h3>Course details made clear.</h3><p>Choose ESL duration, preferred start date, and English level in one structured application.</p></div></article>
-      <article class="service-card"><span class="service-index">Accommodation</span><div><h3>Stay options matched to your life.</h3><p>Select a studio, private room, or whole house, with preferences for Kuala Lumpur city centre, quiet study, parking, and family size.</p></div></article>
+      <article class="service-card"><span class="service-index" data-en="Enrollment" data-ar="التسجيل">Enrollment</span><div><h3 data-en="Course details made clear." data-ar="تفاصيل الدورة بوضوح.">Course details made clear.</h3><p data-en="Choose ESL duration, preferred start date, and English level in one structured application." data-ar="اختر مدة دورة اللغة الإنجليزية، وتاريخ البداية المفضل، ومستوى اللغة في نموذج واحد منظم.">Choose ESL duration, preferred start date, and English level in one structured application.</p></div></article>
+      <article class="service-card"><span class="service-index" data-en="Accommodation" data-ar="السكن">Accommodation</span><div><h3 data-en="Stay options matched to your life." data-ar="خيارات سكن تناسب احتياجك.">Stay options matched to your life.</h3><p data-en="Select a studio, private room, or whole house, with preferences for Kuala Lumpur city centre, quiet study, parking, and family size." data-ar="اختر استوديو، أو غرفة خاصة، أو شقة كاملة، مع تفضيلات مثل وسط كوالالمبور، هدوء الدراسة، المواقف، وحجم العائلة.">Select a studio, private room, or whole house, with preferences for Kuala Lumpur city centre, quiet study, parking, and family size.</p></div></article>
     </div>
   </section>
 
   <section class="section" id="journey">
     <div class="journey">
-      <article class="journey-card reveal"><h3>Designed for students who need more than a course booking.</h3><p>Kalimh Academy supports the full study-abroad story: where you study, where you stay, and who responds when something needs attention.</p></article>
-      <article class="journey-card small reveal"><h3>Verified comfort, practical care.</h3><p>Accommodation preferences are reviewed for safety, comfort, student lifestyle, and family requirements.</p></article>
-      <article class="journey-card airport reveal"><h3>Airport pickup support.</h3><p>Optional airport pickup can help students and families arrive in Kuala Lumpur with a smoother first-day experience.</p></article>
+      <article class="journey-card reveal"><h3 data-en="Designed for students who need more than a course booking." data-ar="مصممة للطلاب الذين يحتاجون أكثر من مجرد حجز دورة.">Designed for students who need more than a course booking.</h3><p data-en="Kalimh Academy supports the full study-abroad story: where you study, where you stay, and who responds when something needs attention." data-ar="تدعم أكاديمية كلمة تجربة الدراسة في الخارج كاملة: أين تدرس، أين تسكن، ومن يتابع معك عند الحاجة.">Kalimh Academy supports the full study-abroad story: where you study, where you stay, and who responds when something needs attention.</p></article>
+      <article class="journey-card small reveal"><h3 data-en="Verified comfort, practical care." data-ar="راحة موثوقة ورعاية عملية.">Verified comfort, practical care.</h3><p data-en="Accommodation preferences are reviewed for safety, comfort, student lifestyle, and family requirements." data-ar="تُراجع تفضيلات السكن بناءً على السلامة والراحة ونمط حياة الطالب واحتياجات العائلة.">Accommodation preferences are reviewed for safety, comfort, student lifestyle, and family requirements.</p></article>
+      <article class="journey-card airport reveal"><h3 data-en="Airport pickup support." data-ar="دعم الاستقبال من المطار.">Airport pickup support.</h3><p data-en="Optional airport pickup can help students and families arrive in Kuala Lumpur with a smoother first-day experience." data-ar="يمكن ترتيب استقبال اختياري من المطار لمساعدة الطلاب والعائلات على بداية أسهل في كوالالمبور.">Optional airport pickup can help students and families arrive in Kuala Lumpur with a smoother first-day experience.</p></article>
     </div>
   </section>
 
-  <section class="section"><div class="stats reveal"><div class="stat"><strong>4h</strong><span>Enrollment response target</span></div><div class="stat"><strong>24h</strong><span>Accommodation match target</span></div><div class="stat"><strong>3</strong><span>Support workflow areas</span></div></div></section>
+  <section class="section"><div class="stats reveal"><div class="stat"><strong>4h</strong><span data-en="Enrollment response target" data-ar="هدف الرد على التسجيل">Enrollment response target</span></div><div class="stat"><strong>24h</strong><span data-en="Accommodation match target" data-ar="هدف مطابقة السكن">Accommodation match target</span></div><div class="stat"><strong>3</strong><span data-en="Support workflow areas" data-ar="مجالات دعم أساسية">Support workflow areas</span></div></div></section>
 
   <!-- WhatsApp Application Form -->
   <section class="section" id="apply">
     <div class="form-shell">
       <aside class="form-intro reveal">
-        <span class="form-badge" style="background:var(--mint); padding:6px 14px; border-radius:999px;">Application</span>
-        <h2>Tell us what your Malaysia stay needs.</h2>
-        <p>Submit your details and they will be forwarded directly via WhatsApp to our concierge team. We’ll reach out within 24 hours.</p>
+        <span class="form-badge" style="background:var(--mint); padding:6px 14px; border-radius:999px;" data-en="Application" data-ar="التقديم">Application</span>
+        <h2 data-en="Tell us what your Malaysia stay needs." data-ar="أخبرنا بما تحتاجه إقامتك في ماليزيا.">Tell us what your Malaysia stay needs.</h2>
+        <p data-en="Submit your details and they will be forwarded directly via WhatsApp to our concierge team. We’ll reach out within 24 hours." data-ar="أرسل بياناتك وسيتم تحويلها مباشرة عبر واتساب إلى فريقنا. سنتواصل معك خلال 24 ساعة.">Submit your details and they will be forwarded directly via WhatsApp to our concierge team. We’ll reach out within 24 hours.</p>
       </aside>
 
       <form class="application-card reveal" id="kalimhWhatsAppForm">
         <div class="form-section">
-          <h3 class="form-section-title"><span>01</span> Personal & course details</h3>
-          <div class="form-row"><div class="form-group full"><label class="required" for="fullName">Full name</label><input type="text" id="fullName" placeholder="Aisha Binti Rahman" required /></div></div>
-          <div class="form-row"><div class="form-group"><label class="required" for="email">Email</label><input type="email" id="email" placeholder="student@example.com" required /></div><div class="form-group"><label class="required" for="phone">WhatsApp / Phone</label><input type="tel" id="phone" placeholder="+60 12-345 6789" required /></div></div>
-          <div class="form-row"><div class="form-group"><label class="required" for="dob">Date of birth</label><input type="date" id="dob" required /></div><div class="form-group"><label class="required" for="courseDuration">ESL course duration</label><select id="courseDuration" required><option value="">Select duration</option><option>1 month</option><option>2 months</option><option>3 months</option><option>4 months</option><option>6 months</option><option>8 months</option><option>10 months</option><option>12 months</option></select></div></div>
-          <div class="form-row"><div class="form-group"><label class="required" for="startDate">Preferred start date</label><input type="date" id="startDate" required /></div><div class="form-group"><label for="englishLevel">English level</label><select id="englishLevel"><option>Beginner</option><option selected>Intermediate</option><option>Advanced</option></select></div></div>
+          <h3 class="form-section-title"><span class="step">01</span> <span class="section-label" data-en="Personal & course details" data-ar="البيانات الشخصية وتفاصيل الدورة">Personal & course details</span></h3>
+          <div class="form-row"><div class="form-group full"><label class="required" for="fullName" data-en="Full name" data-ar="الاسم الكامل">Full name</label><input type="text" id="fullName" placeholder="Aisha Binti Rahman" data-placeholder-en="Aisha Binti Rahman" data-placeholder-ar="مثال: أحمد محمد" required /></div></div>
+          <div class="form-row"><div class="form-group"><label class="required" for="email" data-en="Email" data-ar="البريد الإلكتروني">Email</label><input type="email" id="email" placeholder="student@example.com" data-placeholder-en="student@example.com" data-placeholder-ar="student@example.com" required /></div><div class="form-group"><label class="required" for="phone" data-en="WhatsApp / Phone" data-ar="واتساب / رقم الهاتف">WhatsApp / Phone</label><input type="tel" id="phone" placeholder="+60 12-345 6789" data-placeholder-en="+60 12-345 6789" data-placeholder-ar="+60 12-345 6789" required /></div></div>
+          <div class="form-row"><div class="form-group"><label class="required" for="dob" data-en="Date of birth" data-ar="تاريخ الميلاد">Date of birth</label><input type="date" id="dob" required /></div><div class="form-group"><label class="required" for="courseDuration" data-en="ESL course duration" data-ar="مدة دورة اللغة الإنجليزية">ESL course duration</label><select id="courseDuration" required><option value="" data-en="Select duration" data-ar="اختر المدة">Select duration</option><option data-en="1 month" data-ar="شهر واحد">1 month</option><option data-en="2 months" data-ar="شهران">2 months</option><option data-en="3 months" data-ar="3 أشهر">3 months</option><option data-en="4 months" data-ar="4 أشهر">4 months</option><option data-en="6 months" data-ar="6 أشهر">6 months</option><option data-en="8 months" data-ar="8 أشهر">8 months</option><option data-en="10 months" data-ar="10 أشهر">10 months</option><option data-en="12 months" data-ar="12 شهرًا">12 months</option></select></div></div>
+          <div class="form-row"><div class="form-group"><label class="required" for="startDate" data-en="Preferred start date" data-ar="تاريخ البداية المفضل">Preferred start date</label><input type="date" id="startDate" required /></div><div class="form-group"><label for="englishLevel" data-en="English level" data-ar="مستوى اللغة الإنجليزية">English level</label><select id="englishLevel"><option data-en="Beginner" data-ar="مبتدئ">Beginner</option><option selected data-en="Intermediate" data-ar="متوسط">Intermediate</option><option data-en="Advanced" data-ar="متقدم">Advanced</option></select></div></div>
         </div>
 
         <div class="form-section">
-          <h3 class="form-section-title"><span>02</span> Accommodation preferences</h3>
-          <div class="form-row"><div class="form-group"><label class="required" for="accommodationType">Accommodation type</label><select id="accommodationType" required><option value="">Select accommodation</option><option value="studio">Studio — private and self-contained</option><option value="private_room">Private room — shared living or kitchen</option><option value="whole_house">Whole house / apartment — private for family</option></select></div><div class="form-group"><label for="area">Preferred area</label><select id="area"><option>Kuala Lumpur city centre</option></select></div></div>
-          <div class="form-row" id="groupSizeField" style="display: none;"><div class="form-group full"><label for="groupSize">Number of family members / group size</label><input type="number" id="groupSize" min="1" max="12" placeholder="e.g., 4" /></div></div>
-          <div class="form-row"><div class="form-group full"><label for="accommodationRequests">Special requests</label><textarea id="accommodationRequests" placeholder="e.g., quiet study space, ground floor, parking needed"></textarea></div></div>
-          <div class="field-note"><img src="https://journeywoman.com/wp-content/uploads/2023/12/Kuala-Lumpur-Malaysia-Buildings.jpg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop" alt="KL area" /> Verified accommodations are reviewed for safety, comfort, and student suitability.</div>
+          <h3 class="form-section-title"><span class="step">02</span> <span class="section-label" data-en="Accommodation preferences" data-ar="تفضيلات السكن">Accommodation preferences</span></h3>
+          <div class="form-row"><div class="form-group"><label class="required" for="accommodationType" data-en="Accommodation type" data-ar="نوع السكن">Accommodation type</label><select id="accommodationType" required><option value="" data-en="Select accommodation" data-ar="اختر نوع السكن">Select accommodation</option><option value="studio" data-en="Studio — private and self-contained" data-ar="استوديو — خاص ومستقل">Studio — private and self-contained</option><option value="private_room" data-en="Private room — shared living or kitchen" data-ar="غرفة خاصة — مع صالة أو مطبخ مشترك">Private room — shared living or kitchen</option><option value="whole_house" data-en="Whole house / apartment — private for family" data-ar="شقة كاملة — خاصة للعائلة">Whole house / apartment — private for family</option></select></div><div class="form-group"><label for="area" data-en="Preferred area" data-ar="المنطقة المفضلة">Preferred area</label><select id="area"><option data-en="Kuala Lumpur city centre" data-ar="وسط مدينة كوالالمبور">Kuala Lumpur city centre</option></select></div></div>
+          <div class="form-row" id="groupSizeField" style="display: none;"><div class="form-group full"><label for="groupSize" data-en="Number of family members / group size" data-ar="عدد أفراد العائلة / المجموعة">Number of family members / group size</label><input type="number" id="groupSize" min="1" max="12" placeholder="e.g., 4" data-placeholder-en="e.g., 4" data-placeholder-ar="مثال: 4" /></div></div>
+          <div class="form-row"><div class="form-group full"><label for="accommodationRequests" data-en="Special requests" data-ar="طلبات خاصة">Special requests</label><textarea id="accommodationRequests" placeholder="e.g., quiet study space, ground floor, parking needed" data-placeholder-en="e.g., quiet study space, ground floor, parking needed" data-placeholder-ar="مثال: مكان هادئ للدراسة، طابق أرضي، موقف سيارة"></textarea></div></div>
+          <div class="field-note"><img src="https://journeywoman.com/wp-content/uploads/2023/12/Kuala-Lumpur-Malaysia-Buildings.jpg?auto=compress&cs=tinysrgb&w=120&h=120&fit=crop" alt="KL area" /> <span data-en="Verified accommodations are reviewed for safety, comfort, and student suitability." data-ar="تتم مراجعة أماكن السكن للتأكد من السلامة والراحة ومناسبتها للطلاب.">Verified accommodations are reviewed for safety, comfort, and student suitability.</span></div>
         </div>
 
         <div class="submit-area">
-          <button class="button mint" type="button" id="whatsappSubmitBtn">📲 Submit & forward to WhatsApp</button>
+          <button class="button mint" type="button" id="whatsappSubmitBtn" data-en="📲 Submit & forward to WhatsApp" data-ar="📲 إرسال الطلب عبر واتساب">📲 Submit & forward to WhatsApp</button>
           <div id="waFormFeedback" class="alert"></div>
-          <p style="font-size:0.75rem; margin-top:16px; color:#4a5b74;">By submitting, your details will be shared via WhatsApp message to Kalimh Academy concierge. No data stored on server.</p>
+          <p style="font-size:0.75rem; margin-top:16px; color:#4a5b74;" data-en="By submitting, your details will be shared via WhatsApp message to Kalimh Academy concierge. No data stored on server." data-ar="عند الإرسال، ستتم مشاركة بياناتك عبر رسالة واتساب مع فريق أكاديمية كلمة. لا يتم تخزين البيانات على الخادم.">By submitting, your details will be shared via WhatsApp message to Kalimh Academy concierge. No data stored on server.</p>
         </div>
       </form>
     </div>
   </section>
 
-  <footer class="footer"><span>Kalimh Academy / Malaysia ESL Concierge</span><span>Enrollment · Accommodation · Student Support</span></footer>
+  <footer class="footer"><span data-en="Kalimh Academy / Malaysia ESL Concierge" data-ar="أكاديمية كلمة / خدمة دراسة اللغة الإنجليزية في ماليزيا">Kalimh Academy / Malaysia ESL Concierge</span><span data-en="Enrollment · Accommodation · Student Support" data-ar="التسجيل · السكن · الدعم الطلابي">Enrollment · Accommodation · Student Support</span></footer>
 
-  <a class="whatsapp-float" href="https://wa.me/14387227303?text=Hello%20Kalimh%20Academy%2C%20I%20want%20to%20ask%20about%20ESL%20study%20and%20accommodation." target="_blank" rel="noopener noreferrer"><span>WhatsApp</span><svg viewBox="0 0 32 32"><path d="M16.02 3.2A12.77 12.77 0 0 0 5.1 22.56L3.2 29l6.62-1.74a12.73 12.73 0 0 0 6.2 1.58h.01A12.82 12.82 0 0 0 28.8 16.03 12.8 12.8 0 0 0 16.02 3.2Zm0 23.45h-.01a10.57 10.57 0 0 1-5.39-1.47l-.39-.23-3.93 1.03 1.05-3.83-.25-.4a10.58 10.58 0 1 1 8.92 4.9Zm5.8-7.92c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1.01 1.24-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.88-1.77-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.71-.98-2.35-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.56.08-.85.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.42 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.15-1.51.26-.74.26-1.38.18-1.51-.08-.13-.29-.21-.61-.37Z"/></svg></a>
+  <a class="whatsapp-float" id="whatsappFloat" href="https://wa.me/14387227303?text=Hello%20Kalimh%20Academy%2C%20I%20want%20to%20ask%20about%20ESL%20study%20and%20accommodation." target="_blank" rel="noopener noreferrer"><span data-en="WhatsApp" data-ar="واتساب">WhatsApp</span><svg viewBox="0 0 32 32"><path d="M16.02 3.2A12.77 12.77 0 0 0 5.1 22.56L3.2 29l6.62-1.74a12.73 12.73 0 0 0 6.2 1.58h.01A12.82 12.82 0 0 0 28.8 16.03 12.8 12.8 0 0 0 16.02 3.2Zm0 23.45h-.01a10.57 10.57 0 0 1-5.39-1.47l-.39-.23-3.93 1.03 1.05-3.83-.25-.4a10.58 10.58 0 1 1 8.92 4.9Zm5.8-7.92c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1.01 1.24-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.88-1.77-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.71-.98-2.35-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.56.08-.85.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.42 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.15-1.51.26-.74.26-1.38.18-1.51-.08-.13-.29-.21-.61-.37Z"/></svg></a>
 </main>
 
 <script>
@@ -811,6 +950,70 @@
     entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+
+  // Language switcher — English / Arabic
+  const languageToggle = document.getElementById('languageToggle');
+  const whatsappFloat = document.getElementById('whatsappFloat');
+  let currentLang = localStorage.getItem('kalimhLang') || 'en';
+
+  const uiMessages = {
+    en: {
+      fullName: 'Full name is required.',
+      email: 'Valid email is required.',
+      phone: 'WhatsApp/Phone number is required.',
+      dob: 'Date of birth is required.',
+      duration: 'Please select ESL course duration.',
+      startDate: 'Preferred start date is required.',
+      accommodation: 'Please select accommodation type.',
+      groupSize: 'Please enter family/group size for whole house.',
+      success: "✅ Application opened in WhatsApp! Please send the pre-filled message to Kalimh Academy. We'll respond within 24h."
+    },
+    ar: {
+      fullName: 'الاسم الكامل مطلوب.',
+      email: 'يرجى إدخال بريد إلكتروني صحيح.',
+      phone: 'رقم الواتساب / الهاتف مطلوب.',
+      dob: 'تاريخ الميلاد مطلوب.',
+      duration: 'يرجى اختيار مدة دورة اللغة الإنجليزية.',
+      startDate: 'تاريخ البداية المفضل مطلوب.',
+      accommodation: 'يرجى اختيار نوع السكن.',
+      groupSize: 'يرجى إدخال عدد أفراد العائلة / المجموعة عند اختيار شقة كاملة.',
+      success: '✅ تم فتح الطلب في واتساب! يرجى إرسال الرسالة الجاهزة إلى أكاديمية كلمة. سنرد خلال 24 ساعة.'
+    }
+  };
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.title = lang === 'ar'
+      ? 'أكاديمية كلمة — دراسة اللغة الإنجليزية والسكن في ماليزيا'
+      : 'Kalimh Academy — Malaysia ESL + Accommodation Concierge';
+
+    document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+      el.textContent = el.dataset[lang];
+    });
+
+    document.querySelectorAll('[data-placeholder-en][data-placeholder-ar]').forEach(el => {
+      el.placeholder = lang === 'ar' ? el.dataset.placeholderAr : el.dataset.placeholderEn;
+    });
+
+    if (whatsappFloat) {
+      const text = lang === 'ar'
+        ? 'مرحباً أكاديمية كلمة، أريد السؤال عن دراسة اللغة الإنجليزية والسكن في ماليزيا.'
+        : 'Hello Kalimh Academy, I want to ask about ESL study and accommodation.';
+      whatsappFloat.href = `https://wa.me/${WA_BUSINESS_NUMBER}?text=${encodeURIComponent(text)}`;
+    }
+
+    localStorage.setItem('kalimhLang', lang);
+  }
+
+  if (languageToggle) {
+    languageToggle.addEventListener('click', () => {
+      setLanguage(currentLang === 'en' ? 'ar' : 'en');
+    });
+  }
+
 
   // WhatsApp Integration — forward to WhatsApp number
   const WA_BUSINESS_NUMBER = "14387227303";
@@ -841,57 +1044,97 @@
     setTimeout(() => { feedbackDiv.style.display = 'none'; }, 6000);
   }
 
+  function getSelectedText(selectElement) {
+    const option = selectElement.options[selectElement.selectedIndex];
+    if (!option) return '';
+    return currentLang === 'ar' && option.dataset.ar ? option.dataset.ar : option.textContent;
+  }
+
   function formatWhatsAppMessage(data) {
+    if (currentLang === 'ar') {
+      let groupInfo = '';
+      if (data.accommodationType === 'whole_house' && data.groupSize) groupInfo = `\n👨‍👩‍👧‍👦 عدد أفراد العائلة / المجموعة: ${data.groupSize}`;
+      let requests = data.accommodationRequests ? `\n📝 طلبات خاصة: ${data.accommodationRequests}` : '';
+
+      return `🏫 *طلب جديد من أكاديمية كلمة* 🏫
+
+*👤 بيانات الطالب*
+الاسم: ${data.fullName}
+البريد الإلكتروني: ${data.email}
+واتساب: ${data.phone}
+تاريخ الميلاد: ${data.dob}
+مستوى اللغة الإنجليزية: ${data.englishLevelText}
+
+*📚 دورة اللغة الإنجليزية*
+المدة: ${data.courseDurationText}
+تاريخ البداية: ${data.startDate}
+
+*🏠 السكن*
+نوع السكن: ${data.accommodationTypeText}
+المنطقة: ${data.areaText}${groupInfo}${requests}
+
+✅ تم إرسال الطلب عبر الموقع. يرجى التواصل مع الطالب.`;
+    }
+
     let groupInfo = '';
     if (data.accommodationType === 'whole_house' && data.groupSize) groupInfo = `\n👨‍👩‍👧‍👦 Group/Family size: ${data.groupSize}`;
     let requests = data.accommodationRequests ? `\n📝 Special requests: ${data.accommodationRequests}` : '';
-    
+
     return `🏫 *NEW KALIMH ACADEMY APPLICATION* 🏫
-        
+
 *👤 STUDENT INFO*
 Name: ${data.fullName}
 Email: ${data.email}
 WhatsApp: ${data.phone}
 DOB: ${data.dob}
-English level: ${data.englishLevel}
+English level: ${data.englishLevelText}
 
 *📚 ESL COURSE*
-Duration: ${data.courseDuration}
+Duration: ${data.courseDurationText}
 Start date: ${data.startDate}
 
 *🏠 ACCOMMODATION*
-Type: ${data.accommodationType}
-Area: ${data.area}${groupInfo}${requests}
+Type: ${data.accommodationTypeText}
+Area: ${data.areaText}${groupInfo}${requests}
 
 ✅ Application sent via website. Please contact student.`;
   }
 
   function getFormData() {
+    const englishLevelSelect = document.getElementById('englishLevel');
+    const courseDurationSelect = document.getElementById('courseDuration');
+    const areaSelect = document.getElementById('area');
+
     return {
       fullName: document.getElementById('fullName').value.trim(),
       email: document.getElementById('email').value.trim(),
       phone: document.getElementById('phone').value.trim(),
       dob: document.getElementById('dob').value,
-      englishLevel: document.getElementById('englishLevel').value,
-      courseDuration: document.getElementById('courseDuration').value,
+      englishLevel: englishLevelSelect.value,
+      englishLevelText: getSelectedText(englishLevelSelect),
+      courseDuration: courseDurationSelect.value,
+      courseDurationText: getSelectedText(courseDurationSelect),
       startDate: document.getElementById('startDate').value,
       accommodationType: accSelect.value,
-      area: document.getElementById('area').value,
+      accommodationTypeText: getSelectedText(accSelect),
+      area: areaSelect.value,
+      areaText: getSelectedText(areaSelect),
       accommodationRequests: document.getElementById('accommodationRequests').value.trim(),
       groupSize: groupSizeInput.value || ''
     };
   }
 
   function validateFormData(data) {
-    if (!data.fullName) { showMessage('Full name is required.', 'error'); return false; }
-    if (!data.email || !data.email.includes('@')) { showMessage('Valid email is required.', 'error'); return false; }
-    if (!data.phone) { showMessage('WhatsApp/Phone number is required.', 'error'); return false; }
-    if (!data.dob) { showMessage('Date of birth is required.', 'error'); return false; }
-    if (!data.courseDuration) { showMessage('Please select ESL course duration.', 'error'); return false; }
-    if (!data.startDate) { showMessage('Preferred start date is required.', 'error'); return false; }
-    if (!data.accommodationType) { showMessage('Please select accommodation type.', 'error'); return false; }
+    const m = uiMessages[currentLang];
+    if (!data.fullName) { showMessage(m.fullName, 'error'); return false; }
+    if (!data.email || !data.email.includes('@')) { showMessage(m.email, 'error'); return false; }
+    if (!data.phone) { showMessage(m.phone, 'error'); return false; }
+    if (!data.dob) { showMessage(m.dob, 'error'); return false; }
+    if (!data.courseDuration) { showMessage(m.duration, 'error'); return false; }
+    if (!data.startDate) { showMessage(m.startDate, 'error'); return false; }
+    if (!data.accommodationType) { showMessage(m.accommodation, 'error'); return false; }
     if (data.accommodationType === 'whole_house' && (!data.groupSize || data.groupSize < 1)) {
-      showMessage('Please enter family/group size for whole house.', 'error');
+      showMessage(m.groupSize, 'error');
       return false;
     }
     return true;
@@ -906,8 +1149,9 @@ Area: ${data.area}${groupInfo}${requests}
     const whatsappUrl = `https://wa.me/${WA_BUSINESS_NUMBER}?text=${encodedMsg}`;
     
     window.open(whatsappUrl, '_blank');
-    showMessage(`✅ Application opened in WhatsApp! Please send the pre-filled message to Kalimh Academy. We'll respond within 24h.`, 'success');
+    showMessage(uiMessages[currentLang].success, 'success');
   });
+  setLanguage(currentLang);
 </script>
 </body>
 </html>
