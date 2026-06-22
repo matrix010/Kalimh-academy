@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="إشعار خصوصية أكاديمية كلمة.">
+  <meta name="theme-color" content="#2b2d42">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="أكاديمية كلمة — إشعار الخصوصية">
+  <meta property="og:description" content="كيف تتعامل أكاديمية كلمة مع الاستفسارات الأولية عبر هذا الموقع.">
+  <meta property="og:locale" content="ar_AR">
+  <link rel="canonical" href="https://kalimhacademy.com/ar/privacy.html">
+  <title>أكاديمية كلمة — إشعار الخصوصية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&family=Zain:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics: analytics cookies are created only after a visitor accepts analytics. -->
+  <script>
+    (function () {
+      const measurementId = 'G-HSSBHJYQX3';
+      const consentCookie = 'kalimh_cookie_consent';
+      const readCookie = (name) => {
+        const prefix = `${name}=`;
+        return document.cookie.split(';').map((item) => item.trim()).find((item) => item.startsWith(prefix))?.slice(prefix.length) || '';
+      };
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
+      window.gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      });
+
+      window.kalimhLoadAnalytics = function () {
+        if (window.__kalimhAnalyticsLoaded) return;
+        window.__kalimhAnalyticsLoaded = true;
+        window.gtag('js', new Date());
+        window.gtag('config', measurementId, { anonymize_ip: true });
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+        script.dataset.kalimhAnalytics = 'true';
+        document.head.appendChild(script);
+      };
+
+      if (readCookie(consentCookie) === 'accepted') {
+        window.gtag('consent', 'update', {
+          analytics_storage: 'granted',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied'
+        });
+        window.kalimhLoadAnalytics();
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent" data-en="Skip to content" data-ar="انتقل إلى المحتوى">Skip to content</a>
+  <header class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a class="brand-group" href="index.html" aria-label="Kalimh Academy home" data-aria-en="Kalimh Academy home" data-aria-ar="الصفحة الرئيسية لأكاديمية كلمة">
+        <img class="brand-mark" src="../assets/logo/kalimh-academy-logo.svg" alt="Kalimh Academy logo" data-alt-en="Kalimh Academy logo" data-alt-ar="شعار أكاديمية كلمة">
+        <span class="brand-name" data-en="Kalimh Academy" data-ar="أكاديمية كلمة">Kalimh Academy</span>
+      </a>
+      <div class="nav-actions">
+        <a class="button" href="index.html"><span data-en="Back to home" data-ar="العودة للرئيسية">Back to home</span></a>
+        <button class="language-toggle" id="languageToggle" type="button" aria-label="Switch language" data-aria-en="Switch language" data-aria-ar="تبديل اللغة" data-lang-en="../privacy.html" data-lang-ar="privacy.html">العربية</button>
+      </div>
+    </div>
+  </header>
+  <main class="page" id="mainContent">
+    <section class="section" style="padding-top: 150px;">
+      <div class="container" style="max-width: 920px;">
+        <header class="section-header reveal">
+          <span class="section-kicker" data-en="Privacy" data-ar="الخصوصية">Privacy</span>
+          <h1 class="section-title" data-en="Privacy notice" data-ar="إشعار الخصوصية">Privacy notice</h1>
+        </header>
+        <div class="section-copy reveal">
+          <p data-en="Kalimh Academy uses this website to help visitors start an enquiry about study abroad, accommodation, and arrival support." data-ar="تستخدم أكاديمية كلمة هذا الموقع لمساعدة الزوار على بدء استفسار حول الدراسة في الخارج والسكن ودعم الوصول.">Kalimh Academy uses this website to help visitors start an enquiry about study abroad, accommodation, and arrival support.</p>
+          <h2 style="margin-top:42px; font-size: clamp(2rem, 4vw, 3.4rem);" data-en="What happens when you submit the form" data-ar="ماذا يحدث عند إرسال النموذج">What happens when you submit the form</h2>
+          <p style="margin-top:16px;" data-en="Submitting the enquiry form opens WhatsApp with a message that contains the details you entered. The website itself does not save the form responses in a database." data-ar="عند إرسال نموذج الاستفسار، يتم فتح واتساب برسالة تحتوي على التفاصيل التي أدخلتها. الموقع نفسه لا يحفظ ردود النموذج في قاعدة بيانات.">Submitting the enquiry form opens WhatsApp with a message that contains the details you entered. The website itself does not save the form responses in a database.</p>
+          <h2 style="margin-top:42px; font-size: clamp(2rem, 4vw, 3.4rem);" data-en="Please share only what is needed" data-ar="يرجى مشاركة ما يلزم فقط">Please share only what is needed</h2>
+          <p style="margin-top:16px;" data-en="Do not send passport numbers, banking information, or highly sensitive documents through the first enquiry form. Kalimh Academy will tell you how to share any additional documents securely if they are needed later." data-ar="لا ترسل أرقام جواز السفر أو المعلومات البنكية أو المستندات الحساسة عبر نموذج الاستفسار الأول. ستوضح أكاديمية كلمة كيفية مشاركة أي مستندات إضافية بصورة آمنة عند الحاجة لاحقًا.">Do not send passport numbers, banking information, or highly sensitive documents through the first enquiry form. Kalimh Academy will tell you how to share any additional documents securely if they are needed later.</p>
+
+          <h2 style="margin-top:42px; font-size: clamp(2rem, 4vw, 3.4rem);" data-en="Cookies and Google Analytics" data-ar="ملفات تعريف الارتباط وGoogle Analytics">Cookies and Google Analytics</h2>
+          <p style="margin-top:16px;" data-en="The website uses one necessary cookie named kalimh_cookie_consent to remember whether you accepted or rejected analytics cookies. If you accept analytics, Google Analytics may set first-party cookies such as _ga to help us understand page visits and website use. Analytics is not loaded until you choose “Accept analytics.” You can change your choice at any time using the Cookie settings link in the footer." data-ar="يستخدم الموقع ملف تعريف ارتباط ضروريًا واحدًا باسم kalimh_cookie_consent لتذكر ما إذا كنت قبلت ملفات تعريف الارتباط الخاصة بالتحليلات أو رفضتها. عند قبول التحليلات، قد يعيّن Google Analytics ملفات تعريف ارتباط للطرف الأول مثل _ga لمساعدتنا على فهم زيارات الصفحات واستخدام الموقع. لا يتم تحميل التحليلات حتى تختار «قبول التحليلات». يمكنك تغيير اختيارك في أي وقت من خلال رابط «إعدادات ملفات الارتباط» في التذييل.">The website uses one necessary cookie named kalimh_cookie_consent to remember whether you accepted or rejected analytics cookies. If you accept analytics, Google Analytics may set first-party cookies such as _ga to help us understand page visits and website use. Analytics is not loaded until you choose “Accept analytics.” You can change your choice at any time using the Cookie settings link in the footer.</p>
+          <h2 style="margin-top:42px; font-size: clamp(2rem, 4vw, 3.4rem);" data-en="Third-party services" data-ar="خدمات الجهات الخارجية">Third-party services</h2>
+          <p style="margin-top:16px;" data-en="The website may link to WhatsApp, Instagram, Google Fonts, and image delivery services. Their privacy practices are governed by their own policies." data-ar="قد يحتوي الموقع على روابط إلى واتساب وإنستغرام وخطوط جوجل وخدمات عرض الصور. تخضع ممارسات الخصوصية الخاصة بها لسياساتها الخاصة.">The website may link to WhatsApp, Instagram, Google Fonts, and image delivery services. Their privacy practices are governed by their own policies.</p>
+          <h2 style="margin-top:42px; font-size: clamp(2rem, 4vw, 3.4rem);" data-en="Contact" data-ar="التواصل">Contact</h2>
+          <p style="margin-top:16px;" data-en="For questions about this notice or your information, contact Kalimh Academy through its official WhatsApp or Instagram account." data-ar="للاستفسار عن هذا الإشعار أو معلوماتك، تواصل مع أكاديمية كلمة عبر حساب واتساب أو إنستغرام الرسمي.">For questions about this notice or your information, contact Kalimh Academy through its official WhatsApp or Instagram account.</p>
+          <p style="margin-top:42px; font-size:.85rem; color:var(--stone);" data-en="Last updated: June 22, 2026" data-ar="آخر تحديث: 22 يونيو 2026">Last updated: June 22, 2026</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container footer-row"><span data-en="Kalimh Academy / Study Abroad Support" data-ar="أكاديمية كلمة / دعم الدراسة في الخارج">Kalimh Academy / Study Abroad Support</span><a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a></div>
+    <div class="footer-legal">
+      <a href="privacy.html" data-en="Privacy & cookies" data-ar="الخصوصية وملفات الارتباط">Privacy & cookies</a>
+      <button class="cookie-settings-button" type="button" data-cookie-settings data-en="Cookie settings" data-ar="إعدادات ملفات الارتباط">Cookie settings</button>
+    </div></footer>
+  <script src="../js/app.js" defer></script>
+  <section class="cookie-banner" id="cookieBanner" role="region" aria-labelledby="cookieTitle" aria-describedby="cookieDescription" hidden>
+    <div class="cookie-banner-copy">
+      <p class="cookie-banner-kicker" data-en="Privacy choices" data-ar="خيارات الخصوصية">Privacy choices</p>
+      <h2 id="cookieTitle" data-en="Cookies for analytics" data-ar="ملفات تعريف الارتباط للتحليلات">Cookies for analytics</h2>
+      <p id="cookieDescription" data-en="We use one necessary cookie to remember your choice. With your permission, Google Analytics may use cookies to measure page visits and improve the website." data-ar="نستخدم ملف تعريف ارتباط ضروريًا واحدًا لتذكر اختيارك. وبموافقتك، قد يستخدم Google Analytics ملفات تعريف الارتباط لقياس زيارات الصفحات وتحسين الموقع.">We use one necessary cookie to remember your choice. With your permission, Google Analytics may use cookies to measure page visits and improve the website.</p>
+      <a class="cookie-banner-link" href="privacy.html" data-en="Read the privacy notice" data-ar="اقرأ إشعار الخصوصية">Read the privacy notice</a>
+    </div>
+    <div class="cookie-banner-actions">
+      <button class="cookie-button secondary" id="cookieReject" type="button" data-en="Reject analytics" data-ar="رفض التحليلات">Reject analytics</button>
+      <button class="cookie-button primary" id="cookieAccept" type="button" data-en="Accept analytics" data-ar="قبول التحليلات">Accept analytics</button>
+    </div>
+  </section>
+</body>
+</html>

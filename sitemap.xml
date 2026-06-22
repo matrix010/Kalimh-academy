@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://kalimhacademy.com/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kalimhacademy.com/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://kalimhacademy.com/ar/"/>
+  </url>
+  <url>
+    <loc>https://kalimhacademy.com/ar/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kalimhacademy.com/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://kalimhacademy.com/ar/"/>
+  </url>
+  <url>
+    <loc>https://kalimhacademy.com/privacy.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://kalimhacademy.com/ar/privacy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>
