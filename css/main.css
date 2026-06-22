@@ -40,15 +40,13 @@
       mix-blend-mode: multiply;
       background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
     }
-    .journey-card.airport {
-  background:
-    linear-gradient(
-      to top,
-      rgba(11, 31, 58, 0.88),
-      rgba(11, 31, 58, 0.18) 62%
-    ),
-    url("airport_pickup.jpeg") center / cover no-repeat;
-}
+    .journey-card:nth-child(1) {
+      background-image:
+      linear-gradient(to top, rgba(43,45,66,.88), rgba(43,45,66,.09) 66%),
+       url("../assets/images/choose-institute.jpg");
+        background-position: center;
+        background-size: cover;
+    }
     .scroll-progress {
       position: fixed;
       z-index: 100;
@@ -189,8 +187,7 @@
     .journey-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: clamp(19px, 2.6vw, 38px); }
     .journey-card { position: relative; min-height: 490px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(26px,3.4vw,42px); background: linear-gradient(to top, rgba(43,45,66,.88), rgba(43,45,66,.09) 66%), url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1300&q=85") center / cover; }
     .journey-card:nth-child(2) { background-image: linear-gradient(to top, rgba(43,45,66,.88), rgba(43,45,66,.09) 66%), url("https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1300&q=85"); }
-    .journey-card:nth-child(3) { background-image: linear-gradient(to top, rgba(43,45,66,.88), rgba(43,45,66,.09) 66%), url("https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1300&q=85"); }
-    .journey-card::after { content: ""; position: absolute; inset: 14px; border: 1px solid rgba(249,247,242,.24); pointer-events: none; }
+    .journey-card:nth-child(3) { background-image: linear-gradient( to top, rgba(43, 45, 66, 0.90), rgba(43, 45, 66, 0.14) 68% ), url("../airport_pickup.jpeg"); background-position: center; background-size: cover; background-repeat: no-repeat; }    .journey-card::after { content: ""; position: absolute; inset: 14px; border: 1px solid rgba(249,247,242,.24); pointer-events: none; }
     .journey-card > * { position: relative; z-index: 1; }
     .journey-index { color: rgba(249,247,242,.74); font-size: .6rem; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; }
     .journey-card h3 { margin-top: 18px; color: var(--linen); font-size: clamp(2.1rem,3.3vw,3.5rem); line-height: .93; font-style: italic; letter-spacing: -.045em; }
