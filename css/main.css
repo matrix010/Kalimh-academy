@@ -40,13 +40,18 @@
       mix-blend-mode: multiply;
       background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
     }
-    .journey-card:nth-child(1) {
-      background-image:
-      linear-gradient(to top, rgba(43,45,66,.88), rgba(43,45,66,.09) 66%),
-       url("../assets/images/choose-institute.jpg");
-        background-position: center;
-        background-size: cover;
-    }
+    .journey-card:nth-child(3) {
+  background-image:
+    linear-gradient(
+      to top,
+      rgba(43, 45, 66, 0.90),
+      rgba(43, 45, 66, 0.14) 68%
+    ),
+    url("../airport_pickup.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+      }
     .scroll-progress {
       position: fixed;
       z-index: 100;
