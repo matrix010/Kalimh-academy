@@ -1014,3 +1014,9 @@ html[lang="ar"] #about .about-visual figcaption {
     min-height: 350px;
   }
 }
+.about-lead {
+  color: var(--charcoal);
+  font-size: 1.22rem;
+  font-weight: 500;
+  line-height: 1.85;
+}
