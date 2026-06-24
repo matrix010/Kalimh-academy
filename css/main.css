@@ -882,7 +882,12 @@ html[lang="ar"] .cookie-banner-actions { justify-content: flex-start; }
   pointer-events: none;
   transition: opacity .26s ease, visibility .26s ease, transform .26s ease;
 }
-
+.about-lead {
+  color: var(--charcoal);
+  font-size: 1.22rem;
+  font-weight: 500;
+  line-height: 1.85;
+}
 .mobile-menu.is-open {
   opacity: 1;
   visibility: visible;
@@ -1014,9 +1019,4 @@ html[lang="ar"] #about .about-visual figcaption {
     min-height: 350px;
   }
 }
-.about-lead {
-  color: var(--charcoal);
-  font-size: 1.22rem;
-  font-weight: 500;
-  line-height: 1.85;
-}
+
