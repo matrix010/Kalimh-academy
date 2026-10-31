@@ -316,7 +316,10 @@
   const accommodationType = document.getElementById('accommodationType');
   const groupSizeRow = document.getElementById('groupSizeRow');
   const groupSize = document.getElementById('groupSize');
+  const destinationSelect = document.getElementById('destination');
   const studyGoal = document.getElementById('studyGoal');
+  const englishLanguageOption = document.getElementById('englishLanguageOption');
+  const chineseLanguageOption = document.getElementById('chineseLanguageOption');
   const studyDurationRow = document.getElementById('studyDurationRow');
   const studyDuration = document.getElementById('studyDuration');
   const consentField = document.getElementById('consentField');
@@ -327,10 +330,10 @@
   const syncStudyDuration = () => {
     if (!studyGoal || !studyDurationRow || !studyDuration) return;
 
-    const isEnglishCourse = studyGoal.value === 'english';
-    studyDurationRow.hidden = !isEnglishCourse;
-    studyDurationRow.setAttribute('aria-hidden', String(!isEnglishCourse));
-    studyDuration.required = isEnglishCourse;
+    const isLanguageCourse = ['english', 'chinese'].includes(studyGoal.value);
+    studyDurationRow.hidden = !isLanguageCourse;
+    studyDurationRow.setAttribute('aria-hidden', String(!isLanguageCourse));
+    studyDuration.required = isLanguageCourse;
 
     if (!isEnglishCourse) {
       studyDuration.value = '';
@@ -341,9 +344,35 @@
     }
   };
 
+  const syncStudyLanguageOptions = () => {
+    if (!studyGoal || !destinationSelect) return;
+
+    const isChina = destinationSelect.value === 'china';
+    if (englishLanguageOption) {
+      englishLanguageOption.hidden = isChina;
+      englishLanguageOption.disabled = isChina;
+    }
+    if (chineseLanguageOption) {
+      chineseLanguageOption.hidden = !isChina;
+      chineseLanguageOption.disabled = !isChina;
+    }
+
+    const hasWrongLanguage = (isChina && studyGoal.value === 'english') ||
+      (!isChina && studyGoal.value === 'chinese');
+    if (hasWrongLanguage) {
+      studyGoal.value = '';
+      if (studyDuration) studyDuration.value = '';
+    }
+  };
+
   if (studyGoal && studyDurationRow && studyDuration) {
+    syncStudyLanguageOptions();
     syncStudyDuration();
     studyGoal.addEventListener('change', syncStudyDuration);
+    destinationSelect?.addEventListener('change', () => {
+      syncStudyLanguageOptions();
+      syncStudyDuration();
+    });
   }
 
   if (
