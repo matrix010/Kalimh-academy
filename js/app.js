@@ -335,7 +335,7 @@
     studyDurationRow.setAttribute('aria-hidden', String(!isLanguageCourse));
     studyDuration.required = isLanguageCourse;
 
-    if (!isEnglishCourse) {
+    if (!isLanguageCourse) {
       studyDuration.value = '';
       studyDuration.removeAttribute('aria-invalid');
       studyDuration.closest('.field')?.classList.remove('has-error');
