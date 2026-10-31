@@ -18,7 +18,7 @@
 
   const defaultWhatsAppNumber = '60178801714';
   const whatsappNumberByDestination = {
-    china: '8615575178192'
+    china: '8615578178192'
   };
   const consentCookie = 'kalimh_cookie_consent';
   const consentDays = 180;
