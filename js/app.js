@@ -16,7 +16,10 @@
   const cookieAccept = document.getElementById('cookieAccept');
   const cookieReject = document.getElementById('cookieReject');
 
-  const whatsappNumber = '60178801714';
+  const defaultWhatsAppNumber = '60178801714';
+  const whatsappNumberByDestination = {
+    china: '8615575178192'
+  };
   const consentCookie = 'kalimh_cookie_consent';
   const consentDays = 180;
 
@@ -548,6 +551,8 @@
       }
 
       const submission = buildSubmission();
+      const destination = document.getElementById('destination')?.value;
+      const whatsappNumber = whatsappNumberByDestination[destination] || defaultWhatsAppNumber;
       const targetUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(submission.message)}`;
       const endpoint = form.dataset.formEndpoint?.trim();
       exposeFallback(targetUrl, submission.message);
